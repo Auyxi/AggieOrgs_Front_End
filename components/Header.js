@@ -1,3 +1,5 @@
+// part of Next.js tutorial delete later
+
 import Link from 'next/link';
 
 const linkStyle = {

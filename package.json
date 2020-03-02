@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.9.5",
     "core-js": "^3.6.4",
     "next": "^9.2.2",
     "react": "^16.12.0",

@@ -16,7 +16,7 @@ const SideNav = props => {
             <div className={styles.sidebar_navigation_items}>
                 <ul>
                     <li>
-                        <Link href="/recommender">
+                        <Link href="/quiz">
                             <a>AggieOrgs Recommender</a>
                         </Link>
                     </li>

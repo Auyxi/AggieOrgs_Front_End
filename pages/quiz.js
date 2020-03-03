@@ -8,6 +8,8 @@ import Grid from "@material-ui/core/Grid"
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Button from '@material-ui/core/Button';
+import Link from 'next/link';
 
 // using material-ui now https://material-ui.com/components/selects/
 // dynamic forms for later https://itnext.io/building-a-dynamic-controlled-form-in-react-together-794a44ee552c
@@ -39,6 +41,33 @@ class Quiz extends React.Component {
         );
         console.log(name);
         console.log(value);
+    }
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+    handleSubmit = event => {
+        let data = {
+            major1: this.state.major1,
+            major2: this.state.major2,
+            minor1: this.state.minor1,
+            minor2: this.state.minor2,
+            gender: this.state.gender
+        };
+        console.log(data);
+
+        /* fetch('urlexample', {
+            method: 'POST',
+            headers: {
+
+            },
+            body: JSON.stringify(data),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success: ', data);
+        })
+        .catch((error) => {
+            console.error('Error: ', error);
+        }); */
     }
 
     addMajorClickHandler = () => {
@@ -168,6 +197,16 @@ class Quiz extends React.Component {
                     <FormControlLabel value="other" control={<Radio />} label="Other" />
                     <FormControlLabel value="prefer not to say" control={<Radio />} label="Prefer not to say" />
                 </RadioGroup>
+
+                <Button 
+                    onClick={this.handleSubmit}
+                    color="secondary"
+                    variant="contained"
+                >
+                    <Link href="/interests">
+                        Interests ->
+                    </Link>
+                </Button>
             </div>
         );
     }

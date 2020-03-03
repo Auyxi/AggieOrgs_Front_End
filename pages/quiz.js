@@ -4,6 +4,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import React from 'react';
 import { MenuItem } from "@material-ui/core";
+//import AddIcon from '@material-ui/icons/Add';
+import Button from '@material-ui/core/Button';
 import Grid from "@material-ui/core/Grid"
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -14,6 +16,7 @@ import Link from 'next/link';
 // using material-ui now https://material-ui.com/components/selects/
 // dynamic forms for later https://itnext.io/building-a-dynamic-controlled-form-in-react-together-794a44ee552c
 // react forms doc https://reactjs.org/docs/forms.html
+// styling material ui for later: https://stackoverflow.com/questions/48319372/changing-font-family-of-all-material-uiversion-1-components
 
 const indexStyle = {
     "border-top": "20px solid maroon",
@@ -146,6 +149,21 @@ class Quiz extends React.Component {
 
         return (
             <div style={indexStyle}>
+                <style jsx>{`
+                    @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
+                    h1 {
+                        font-family: 'Muli';
+                        font-size: 48px;
+                    }
+                    p {
+                        font-family: 'Roboto';
+                        font-size: 24px;
+                        max-width: 700px;
+                    }
+                    div {
+                        padding: 80px 100px;
+                    }
+                `}</style>            
                 <SideNavLayout />
                 <h1>Welcome to AggieOrgs, NAME.</h1>
                 <p>Descriptive text.</p>

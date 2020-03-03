@@ -1,5 +1,7 @@
 /* https://stackoverflow.com/questions/33949469/using-css-modules-how-do-i-define-more-than-one-style-name/33949534 
    uses `, not ' */
+@import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
+
 
 .sidebar {
     width: 100%;
@@ -13,6 +15,8 @@
     transform: translateX(100%);
     -webkit-transition: transform 0.2s ease-out;
     transition: transform 0.2s ease-out;
+    font-family: 'Roboto' ;
+    font-size: 24px;
 }
 
 .sidebar.open {
@@ -20,10 +24,10 @@
 }
 
 .closeIcon {
-    font-size: 25px;
+    font-size: 35px;
     position: fixed;
     color: white;
-    top: 25px;
+    top: 30px;
     right: 25px;
     z-index: 300;
     cursor: pointer;
@@ -40,11 +44,11 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding-top: 150px;
 }
 
 .sidebar_navigation_items li {
-    margin: 0.5rem 0;
+    margin: 10px 0;
 }
 
 .sidebar_navigation_items a {
@@ -54,5 +58,5 @@
 
 .sidebar_navigation_items a:hover,
 .sidebar_navigation_items a:active {
-    color: maroon;
+    color: lightgray;
 }

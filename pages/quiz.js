@@ -46,20 +46,19 @@ class Quiz extends React.Component {
     }
 
     // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+    // https://css-tricks.com/using-fetch/
     handleSubmit = event => {
         let data = {
-            major1: this.state.major1,
-            major2: this.state.major2,
-            minor1: this.state.minor1,
-            minor2: this.state.minor2,
-            gender: this.state.gender
+            userMajor: [this.state.major1, this.state.major2],
+            userMinor: [this.state.minor1, this.state.minor2],
+            userGender: this.state.gender
         };
         console.log(data);
 
-        /* fetch('urlexample', {
-            method: 'POST',
+        fetch('https://aggieorgs-backend-270016.appspot.com/api/v1/user/27ea0040-5d82-11ea-bf1c-8b58b3001807', {
+            method: 'PATCH',
             headers: {
-
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(data),
         })
@@ -69,7 +68,7 @@ class Quiz extends React.Component {
         })
         .catch((error) => {
             console.error('Error: ', error);
-        }); */
+        });
     }
 
     addMajorClickHandler = () => {

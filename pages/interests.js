@@ -17,9 +17,9 @@ const indexStyle = {
 
 class Interests extends React.Component {
     state = {
-        academic: false,
-        religious: false,
-        fineArts: false
+        Academic: false,
+        Religious: false,
+        "Fine Arts": false
     }
 
     handleChange = name => event => {
@@ -29,7 +29,32 @@ class Interests extends React.Component {
     }
 
     handleSubmit = event => {
-        
+        let categories = [];
+
+        for (let [key, value] of Object.entries(this.state)) {
+            if (value === true) {
+                categories.push(key);
+            }
+        }
+
+        let data = {
+            userInterestTags: categories
+        };
+
+        fetch('https://aggieorgs-backend-270016.appspot.com/api/v1/user/27ea0040-5d82-11ea-bf1c-8b58b3001807', {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success: ', data);
+        })
+        .catch((error) => {
+            console.error('Error: ', error);
+        });
     }
 
     render() {
@@ -43,16 +68,16 @@ class Interests extends React.Component {
                     <FormLabel component="legend">Choose categories of interest.</FormLabel>
                         <FormGroup>
                             <FormControlLabel
-                                control={<Checkbox checked={this.state.academic} onChange={this.handleChange('academic')} value="academic" />}
+                                control={<Checkbox checked={this.state.Academic} onChange={this.handleChange('Academic')} value="academic" />}
                                 label="Academic"
                             />
                             <FormControlLabel
-                                control={<Checkbox checked={this.state.religious} onChange={this.handleChange('religious')} value="religious" />}
+                                control={<Checkbox checked={this.state.Religious} onChange={this.handleChange('Religious')} value="religious" />}
                                 label="Religious"
                             />
                             <FormControlLabel
                                 control={
-                                <Checkbox checked={this.state.fineArts} onChange={this.handleChange('fineArts')} value="fineArts" />
+                                <Checkbox checked={this.state['Fine Arts']} onChange={this.handleChange('Fine Arts')} value="fineArts" />
                                 }
                                 label="Fine Arts"
                             />

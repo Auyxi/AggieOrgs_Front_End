@@ -18,7 +18,7 @@ class Recommender extends React.Component {
     }
 
     componentDidMount() {
-        fetch('https://aggieorgs-backend-270016.appspot.com/api/v1/user/27ea0040-5d82-11ea-bf1c-8b58b3001807')
+        fetch('https://aggieorgs-backend-270016.appspot.com/api/v1/organization/')
         .then((response) => {
             return response.json();
         })
@@ -41,7 +41,7 @@ class Recommender extends React.Component {
                 <SideNavLayout />
                 <h1>Welcome to AggieOrgs, NAME.</h1>
                 <p>Descriptive text.</p>
-                <p>{this.state.data.userId}</p>
+                <p>{this.state.data.orgId}</p>
                 <p>{this.state.data.userFirstName}</p>
                 <p>{this.state.data.userLastName}</p>
             </div>

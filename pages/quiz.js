@@ -10,7 +10,6 @@ import Grid from "@material-ui/core/Grid"
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Button from '@material-ui/core/Button';
 import Link from 'next/link';
 
 // using material-ui now https://material-ui.com/components/selects/
@@ -232,7 +231,7 @@ class Quiz extends React.Component {
                         margin-top: 40px;
                     }
                     body{
-                        margin: 80px 100px;
+                        
                     }
 
                 `}</style> 

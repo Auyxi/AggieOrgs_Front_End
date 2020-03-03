@@ -4,6 +4,10 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import React from 'react';
 import { MenuItem } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid"
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 // using material-ui now https://material-ui.com/components/selects/
 // dynamic forms for later https://itnext.io/building-a-dynamic-controlled-form-in-react-together-794a44ee552c
@@ -16,32 +20,154 @@ const indexStyle = {
 
 class Quiz extends React.Component {
     state = {
-        Major: "None"
+        showMajor2: false,
+        showMinor2: false,
+
+        major1: "None",
+        major2: "None",
+        minor1: "None",
+        minor2: "None",
+        gender: "Prefer not to say"
     };
 
     handleChange = event => {
-        this.setState({Major: event.target.value});
+        const name = event.target.name;
+        const value = event.target.value;
+
+        this.setState({[name]: value}, () =>
+            {console.log(this.state);}
+        );
+        console.log(name);
+        console.log(value);
+    }
+
+    addMajorClickHandler = () => {
+        this.setState({showMajor2: true});
+    }
+
+    removeMajorClickHandler = () => {
+        this.setState({showMajor2: false, major2: "None"});
+    }
+
+    addMinorClickHandler = () => {
+        this.setState({showMinor2: true});
+    }
+
+    removeMinorClickHandler = () => {
+        this.setState({showMinor2: false, minor2: "None"});
     }
 
     render() {
+        let majors = ["None", "Computer Science", "Computing", "Computer Engineering"];
+        let majorDegrees = majors.map((major) =>
+            <MenuItem value={major}>{major}</MenuItem>
+        );
+
+        let secondMajor;
+
+        if (this.state.showMajor2) {
+            secondMajor = <div>
+                <FormControl>
+                    <Select
+                        labelId="major2-label"
+                        id="major2"
+                        name="major2"
+                        value={this.state.major2}
+                        onChange={this.handleChange}
+                    >
+                        {majorDegrees}
+                    </Select>
+                </FormControl>
+                <button onClick={this.removeMajorClickHandler}>Remove major</button>
+            </div>
+
+        }
+        else {
+            secondMajor = <button onClick={this.addMajorClickHandler}>Add new major</button>
+        }
+
+        let minors = ["None", "Computer Science", "Computing", "Computer Engineering", "Cybersecurity"];
+        let minorDegrees = minors.map((minors) =>
+            <MenuItem value={minors}>{minors}</MenuItem>
+        );
+        
+        let secondMinor;
+
+        if (this.state.showMinor2) {
+            secondMinor = <div>
+                <FormControl>
+                    <Select
+                        labelId="minor2-label"
+                        id="minor2"
+                        name="minor2"
+                        value={this.state.minor2}
+                        onChange={this.handleChange}
+                    >
+                        {minorDegrees}
+                    </Select>
+                </FormControl>
+                <button onClick={this.removeMinorClickHandler}>Remove minor</button>
+            </div>
+
+        }
+        else {
+            secondMinor = <button onClick={this.addMinorClickHandler}>Add new minor</button>
+        }
+
+
         return (
             <div style={indexStyle}>
                 <SideNavLayout />
                 <h1>Welcome to AggieOrgs, NAME.</h1>
                 <p>Descriptive text.</p>
-                <FormControl>
-                    <InputLabel id="majors">Your major:</InputLabel>
-                    <Select 
-                        labelId="major-1-label"
-                        id="major-1"
-                        value={this.state.Major}
-                        onChange={this.handleChange}
-                    >
-                        <MenuItem value="Computer Science">Computer Science</MenuItem>
-                        <MenuItem value="Computing">Computing</MenuItem>
-                    </Select>
-                </FormControl>
-                <button>Add new major</button>
+                <Grid
+                    container
+                    direction="row"
+                    justify="flex-start"
+                    alignItems="center"
+                >
+                    <FormControl>
+                        <p>Your major:</p>
+                        <Select 
+                            labelId="major1-label"
+                            id="major1"
+                            name="major1"
+                            value={this.state.major1}
+                            onChange={this.handleChange}
+                        >
+                            {majorDegrees}
+                        </Select>
+                    </FormControl>
+                    {secondMajor}
+                </Grid>
+
+                <Grid
+                    container
+                    direction="row"
+                    justify="flex-start"
+                    alignItems="center"
+                >
+                    <FormControl>
+                        <p>Your minor:</p>
+                        <Select 
+                            labelId="minor1-label"
+                            id="minor1"
+                            name="minor1"
+                            value={this.state.minor1}
+                            onChange={this.handleChange}
+                        >
+                            {minorDegrees}
+                        </Select>
+                    </FormControl>
+                    {secondMinor}
+                </Grid>
+
+                <RadioGroup aria-label="gender" name="gender" value={this.state.gender} onChange={this.handleChange}>
+                    <FormControlLabel value="male" control={<Radio />} label="Male" />
+                    <FormControlLabel value="female" control={<Radio />} label="Female" />
+                    <FormControlLabel value="other" control={<Radio />} label="Other" />
+                    <FormControlLabel value="prefer not to say" control={<Radio />} label="Prefer not to say" />
+                </RadioGroup>
             </div>
         );
     }

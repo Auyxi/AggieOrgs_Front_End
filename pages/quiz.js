@@ -70,7 +70,7 @@ class Quiz extends React.Component {
 
         if (this.state.showMajor2) {
             secondMajor = <div>
-                <FormControl>
+                <FormControl style={{minWidth: 200}}>
                     <Select
                         labelId="major2-label"
                         id="major2"
@@ -81,12 +81,12 @@ class Quiz extends React.Component {
                         {majorDegrees}
                     </Select>
                 </FormControl>
-                <button onClick={this.removeMajorClickHandler}>Remove major</button>
+                <Button onClick={this.removeMajorClickHandler}>Remove major</Button>
             </div>
 
         }
         else {
-            secondMajor = <button onClick={this.addMajorClickHandler}>Add new major</button>
+            secondMajor = <Button onClick={this.addMajorClickHandler}>Add new major</Button>
         }
 
         let minors = ["None", "Computer Science", "Computing", "Computer Engineering", "Cybersecurity"];
@@ -98,7 +98,7 @@ class Quiz extends React.Component {
 
         if (this.state.showMinor2) {
             secondMinor = <div>
-                <FormControl>
+                <FormControl style={{minWidth: 200}}>
                     <Select
                         labelId="minor2-label"
                         id="minor2"
@@ -109,33 +109,19 @@ class Quiz extends React.Component {
                         {minorDegrees}
                     </Select>
                 </FormControl>
-                <button onClick={this.removeMinorClickHandler}>Remove minor</button>
+                <Button onClick={this.removeMinorClickHandler}>Remove minor</Button>
             </div>
 
         }
         else {
-            secondMinor = <button onClick={this.addMinorClickHandler}>Add new minor</button>
+            secondMinor = <Button onClick={this.addMinorClickHandler}>Add new minor</Button>
         }
 
 
         return (
             <div style={indexStyle}>
-                <style jsx>{`
-                    @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
-                    h1 {
-                        font-family: 'Muli';
-                        font-size: 48px;
-                    }
-                    p {
-                        font-family: 'Roboto';
-                        font-size: 24px;
-                        max-width: 700px;
-                    }
-                    div {
-                        padding: 80px 100px;
-                    }
-                `}</style>            
-                <SideNavLayout />
+                <SideNavLayout />   
+                <body>
                 <h1>Welcome to AggieOrgs, NAME.</h1>
                 <p>Descriptive text.</p>
                 <Grid
@@ -144,8 +130,8 @@ class Quiz extends React.Component {
                     justify="flex-start"
                     alignItems="center"
                 >
-                    <FormControl>
-                        <p>Your major:</p>
+                    <FormControl style={{minWidth: 200}}>
+                        <p2>Your major:</p2>
                         <Select 
                             labelId="major1-label"
                             id="major1"
@@ -165,8 +151,8 @@ class Quiz extends React.Component {
                     justify="flex-start"
                     alignItems="center"
                 >
-                    <FormControl>
-                        <p>Your minor:</p>
+                    <FormControl style={{minWidth: 200}}>
+                        <p2>Your minor:</p2>
                         <Select 
                             labelId="minor1-label"
                             id="minor1"
@@ -179,14 +165,42 @@ class Quiz extends React.Component {
                     </FormControl>
                     {secondMinor}
                 </Grid>
-
-                <RadioGroup aria-label="gender" name="gender" value={this.state.gender} onChange={this.handleChange}>
+                <p />
+                <br />
+                <p2>Gender</p2>
+                <RadioGroup aria-label="gender" name="gender"  value={this.state.gender} onChange={this.handleChange} style={{'margin-top': 10}} row>
                     <FormControlLabel value="male" control={<Radio />} label="Male" />
                     <FormControlLabel value="female" control={<Radio />} label="Female" />
                     <FormControlLabel value="other" control={<Radio />} label="Other" />
                     <FormControlLabel value="prefer not to say" control={<Radio />} label="Prefer not to say" />
                 </RadioGroup>
+                <br /> <br />
+                <Button color="primary">Interests > </Button>
+                </body>
+                <style jsx>{`
+                    @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
+                    h1 {
+                        font-family: 'Muli';
+                        font-size: 48px;
+                    }
+                    p {
+                        font-family: 'Roboto';
+                        font-size: 24px;
+                        max-width: 700px;
+                    }
+                    p2 {
+                        font-family: 'Roboto';
+                        font-size: 18px;
+                        margin-bottom: 15px;
+                        margin-top: 40px;
+                    }
+                    body{
+                        margin: 80px 100px;
+                    }
+
+                `}</style> 
             </div>
+            
         );
     }
 }

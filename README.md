@@ -11,3 +11,15 @@ To run the project after installing Next.js, use:
 ```
 npm run dev
 ```
+
+To deploy project to GAE
+from the root directory
+```
+./automation/deploy-gae.sh
+```
+
+To configure permission for deploy-gae.sh
+from the root directory
+```
+chmod +x ./automation/deploy-gae.sh
+```

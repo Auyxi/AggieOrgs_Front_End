@@ -1,16 +1,75 @@
 import SideNavLayout from "../components/SideNavLayout";
+import Head from 'next/head';
+import React from 'react';
+
+// https://www.intricatecloud.io/2019/08/adding-google-sign-in-to-your-webapp-a-react-example/
 
 const indexStyle = {
     "border-top": "20px solid maroon",
     width: "100%"
 };
 
-export default function Account() {
-    return (
-        <div style={indexStyle}>
-            <SideNavLayout />
-            <h1>Welcome to AggieOrgs, NAME.</h1>
-            <p>Placeholder for account view.</p>
-        </div>
-    );
+class Account extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            isSignedIn: false,
+        }
+    }
+
+    componentDidMount() {
+        const successCallback = this.onSuccess.bind(this);
+
+        window.gapi.load('auth2', () => {
+            this.auth2 = gapi.auth2.init({
+                client_id: '885116149069-l3gf8s48u5asqd27vseqbh9kcho9ursl.apps.googleusercontent.com',
+            })
+        
+            window.gapi.load('signin2', function() {
+                // render a sign in button
+                // using this method will show Signed In if the user is already signed in
+                gapi.signin2.render('loginButton', {
+                    width: 200,
+                    height: 50,
+                    onsuccess: successCallback,
+                });
+            })
+        })
+    }
+
+    onSuccess() {
+        this.setState({
+            isSignedIn: true
+        });
+    }
+
+    getContent() {
+        if (this.state.isSignedIn) {
+            return <p>Hello USER, you're signed in.</p>
+        } 
+        else {
+            return (
+            <div>
+                <p>You are not signed in. Click here to sign in.</p>
+                <button id="loginButton">Login with Google</button>
+            </div>
+            )
+        }
+    }
+
+    render() { 
+        return (
+            <div style={indexStyle}>
+                <Head>
+                    <title>Account - AggieOrgs</title>
+                    <script src="https://apis.google.com/js/platform.js" async defer></script>
+                </Head>
+                <SideNavLayout />
+                <h1>Welcome to AggieOrgs, NAME.</h1>
+                {this.getContent()}
+            </div>
+        );
+    }
 }
+
+export default Account;

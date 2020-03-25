@@ -246,10 +246,7 @@ class Quiz extends React.Component {
                         margin-bottom: 15px;
                         margin-top: 40px;
                     }
-                    href {
-                    	color: white;
-
-                    }
+                    
 
                 `}</style> 
             </div>

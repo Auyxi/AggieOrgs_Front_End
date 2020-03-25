@@ -44,6 +44,27 @@ class Recommender extends React.Component {
                 <p>{this.state.data.orgId}</p>
                 <p>{this.state.data.userFirstName}</p>
                 <p>{this.state.data.userLastName}</p>
+
+                <style jsx>{`
+                    @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
+                    h1 {
+                        font-family: 'Muli';
+                        font-size: 48px;
+                    }
+                    p {
+                        font-family: 'Roboto';
+                        font-size: 24px;
+                        max-width: 700px;
+                    }
+                    p2 {
+                        font-family: 'Roboto';
+                        font-size: 18px;
+                        margin-bottom: 15px;
+                        margin-top: 40px;
+                    }
+                    
+
+                `}</style> 
             </div>
         );
     }

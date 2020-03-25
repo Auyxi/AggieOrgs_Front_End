@@ -32,7 +32,7 @@ class Recommender extends React.Component {
     handleChange = name => event => {
         this.setState({[name]: event.target.checked }, () =>
             {console.log(this.state);}
-        };
+        );
     }
 
     render() {

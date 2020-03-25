@@ -82,7 +82,7 @@ class Interests extends React.Component {
                                 label="Fine Arts"
                             />
                         </FormGroup>
-                    <FormHelperText>Click button when done</FormHelperText>
+                    <FormHelperText> Click button when done</FormHelperText>
                 </FormControl>
 
                 <Button 
@@ -90,7 +90,7 @@ class Interests extends React.Component {
                     color="secondary"
                     variant="contained"
                 >
-                    <Link href="/recommender">
+                    <Link href='/recommender'>
                         Recommender ->
                     </Link>
                 </Button>

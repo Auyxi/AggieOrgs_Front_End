@@ -11,6 +11,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Link from 'next/link';
+import { withStyles } from '@material-ui/core/styles';
 
 // using material-ui now https://material-ui.com/components/selects/
 // dynamic forms for later https://itnext.io/building-a-dynamic-controlled-form-in-react-together-794a44ee552c
@@ -21,6 +22,22 @@ const indexStyle = {
     "border-top": "20px solid maroon",
     width: "100%"
 };
+
+const StyledButton = withStyles({
+	root: {
+		background: 'maroon',
+		color: 'white',
+		padding: '5px 20px 5px 20px',
+		border: "2px solid maroon",
+		'font-family': 'Roboto',
+		'&:hover': {
+			background: 'white',
+			color: 'maroon',
+			"font-weight": "bold",
+		}
+
+	},
+})(Button);
 
 class Quiz extends React.Component {
     state = {
@@ -97,7 +114,7 @@ class Quiz extends React.Component {
 
         if (this.state.showMajor2) {
             secondMajor = <div>
-                <FormControl style={{minWidth: 200}}>
+                <FormControl style={{'margin-left': 20, minWidth: 200}}>
                     <Select
                         labelId="major2-label"
                         id="major2"
@@ -108,12 +125,12 @@ class Quiz extends React.Component {
                         {majorDegrees}
                     </Select>
                 </FormControl>
-                <Button onClick={this.removeMajorClickHandler}>Remove major</Button>
+                <StyledButton style={{'margin-left': 20}} onClick={this.removeMajorClickHandler}>Remove major</StyledButton>
             </div>
 
         }
         else {
-            secondMajor = <Button onClick={this.addMajorClickHandler}>Add new major</Button>
+            secondMajor = <StyledButton style={{'margin-left': 20}} onClick={this.addMajorClickHandler}>Add new major</StyledButton>
         }
 
         let minors = ["None", "Computer Science", "Computing", "Computer Engineering", "Cybersecurity"];
@@ -125,7 +142,7 @@ class Quiz extends React.Component {
 
         if (this.state.showMinor2) {
             secondMinor = <div>
-                <FormControl style={{minWidth: 200}}>
+                <FormControl style={{'margin-left': 20, minWidth: 200}}>
                     <Select
                         labelId="minor2-label"
                         id="minor2"
@@ -136,12 +153,12 @@ class Quiz extends React.Component {
                         {minorDegrees}
                     </Select>
                 </FormControl>
-                <Button onClick={this.removeMinorClickHandler}>Remove minor</Button>
+                <StyledButton style={{'margin-left': 20}} onClick={this.removeMinorClickHandler}>Remove minor</StyledButton>
             </div>
 
         }
         else {
-            secondMinor = <Button onClick={this.addMinorClickHandler}>Add new minor</Button>
+            secondMinor = <StyledButton style={{'margin-left': 20}} onClick={this.addMinorClickHandler}>Add new minor</StyledButton>
         }
 
 
@@ -155,7 +172,8 @@ class Quiz extends React.Component {
                     container
                     direction="row"
                     justify="flex-start"
-                    alignItems="center"
+                    alignItems="flex-end"
+
                 >
                     <FormControl style={{minWidth: 200}}>
                         <p2>Your major:</p2>
@@ -168,6 +186,7 @@ class Quiz extends React.Component {
                         >
                             {majorDegrees}
                         </Select>
+                        
                     </FormControl>
                     {secondMajor}
                 </Grid>
@@ -176,7 +195,7 @@ class Quiz extends React.Component {
                     container
                     direction="row"
                     justify="flex-start"
-                    alignItems="center"
+                    alignItems="flex-end"
                 >
                     <FormControl style={{minWidth: 200}}>
                         <p2>Your minor:</p2>
@@ -202,15 +221,13 @@ class Quiz extends React.Component {
                     <FormControlLabel value="prefer not to say" control={<Radio />} label="Prefer not to say" />
                 </RadioGroup>
                 <br /> <br />
-                <Button 
+                <StyledButton 
                     onClick={this.handleSubmit}
-                    color="secondary"
-                    variant="contained"
                 >
-                    <Link href="/interests">
+                    <Link href="/interests" style={{color:'white'}}>
                         Interests ->
                     </Link>
-                </Button>
+                </StyledButton>
                 </body>
                 <style jsx>{`
                     @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
@@ -229,8 +246,9 @@ class Quiz extends React.Component {
                         margin-bottom: 15px;
                         margin-top: 40px;
                     }
-                    body{
-                        
+                    href {
+                    	color: white;
+
                     }
 
                 `}</style> 

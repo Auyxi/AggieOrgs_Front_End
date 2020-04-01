@@ -77,4 +77,5 @@ __pycache__/
 # postman_env.local.json
 # e2e/config/postman_env.json
 
+# macOs generated file
 .DS_Store

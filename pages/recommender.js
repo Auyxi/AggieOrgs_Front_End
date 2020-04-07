@@ -1,3 +1,4 @@
+
 import React from 'react';
 import SideNavLayout from "../components/SideNavLayout";
 import fetch from 'isomorphic-fetch';
@@ -12,7 +13,6 @@ const indexStyle = {
     "border-top": "20px solid maroon",
     width: "100%"
 };
-
 
 class Recommender extends React.Component {
     constructor() {
@@ -67,10 +67,6 @@ class Recommender extends React.Component {
                         margin-bottom: 15px;
                         margin-top: 40px;
                     }
-                    #card {
-                        width: 400px;
-
-                    }
                     
 
                 `}</style> 
@@ -78,5 +74,4 @@ class Recommender extends React.Component {
         );
     }
 }
-
 export default Recommender;

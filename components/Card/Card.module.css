@@ -3,4 +3,34 @@
 .CardBody {
 	width: 500px;
 	border: 1px solid #c4c4c4;
+	border-top: 15px solid #500000;
+	border-radius: 5px;
+}
+
+.OrgName {
+	color: red;
+	font-size: 36px;
+	font-family: 'Muli';
+}
+
+.title {
+	font-size: 18px;
+	font-weight: bold;
+	font-family: 'Roboto';
+}
+
+.tags {
+	font-size: 18px;
+	font-family: 'Roboto';
+}
+
+.purpose {
+	font-size: 18px;
+	font-family: 'Roboto';
+}
+
+.QuickLook {
+	font-size: 18px;
+	text-decoration: underline;
+	font-weight: bold;
 }

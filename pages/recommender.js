@@ -1,16 +1,14 @@
 
 import React from 'react';
+import Card from "../components/CardLayout";
 import SideNavLayout from "../components/SideNavLayout";
 import fetch from 'isomorphic-fetch';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent'
-import Divider from '@material-ui/core/Divider'
 import { withStyles } from '@material-ui/core/styles'
 
 // https://www.robinwieruch.de/react-fetching-data to show how to make the components update in time
 
 const indexStyle = {
-    "border-top": "20px solid maroon",
+    "border-top": "20px solid #500000",
     width: "100%"
 };
 
@@ -49,6 +47,18 @@ class Recommender extends React.Component {
                 <p>{this.state.data.orgId}</p>
                 <p>{this.state.data.userFirstName}</p>
                 <p>{this.state.data.userLastName}</p>
+
+                <Card 
+                    orgName = "Dance Arts Society"
+                    purpose = "The purpose and objectives of this 
+                        organization shall be to allow members to 
+                        choreograph dances (ballet, tap, jazz, hip 
+                        hop, modern, and contemporary) for members 
+                        of the Bryan/College Station Community, who want 
+                        to perform..."
+                    tags = "tag1, tag2, tag3, tag4, tag5, tag6"
+                />
+
 
                 <style jsx>{`
                     @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');

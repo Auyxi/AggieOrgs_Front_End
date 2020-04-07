@@ -5,16 +5,48 @@ import React from 'react'
 import Button from '@material-ui/core/Button';
 import styles from './Card.module.css'
 
-const Card = (props) => ( 
+const StyledYesButton = withStyles({
+	root: {
+		background: '#70cd61',
+		color: 'black',
+		padding: '5px 20px 5px 20px',
+		border: "2px solid #70cd61",
+		'font-family': 'Roboto',
+		'&:hover': {
+			background: 'white',
+			color: 'black',
+			"font-weight": "bold",
+		}
+
+	},
+})(Button);
+
+const StyledNoButton = withStyles({
+	root: {
+		background: '#cd6161',
+		color: 'black',
+		padding: '5px 20px 5px 20px',
+		border: "2px solid #cd6161",
+		'font-family': 'Roboto',
+		'&:hover': {
+			background: 'white',
+			color: 'black',
+			"font-weight": "bold",
+		}
+
+	},
+})(Button);
+
+const Card = ({orgName, purpose, tags}) => ( 
 	<div classname = {styles.CardBody}>
-		<OrgName>Org Name Here</OrgName>
-		<p2>Purpose</p2>
-		<Purpose>The purpose and objectives of this organization shall be to allow members to choreograph dances (ballet, tap, jazz, hip hop, modern, and contemporary) for members of the Bryan/College Station Community, who want to perform...</Purpose>
-		<p2>Tags</p2>
-		<Tags>Tags go here</Tags>
-		<QuickLook>Quick Look ></QuickLook>
-		<Button>Interested!</Button>
-		<Button>No, thanks!</Button>
+		<div classname = {styles.OrgName}>{orgName}</div>
+		<div classname = {styles.title}>Purpose</div>
+		<div classname = {styles.purpose}>{purpose}</div>
+		<div classname = {styles.title}>Tags</div>
+		<div classname = {styles.Tags}>Tags go here</div>
+		<div classname = {styles.QuickLook}>Quick Look ></div>
+		<StyledYesButton>Interested!</StyledYesButton>
+		<StyledNoButton>No, thanks!</StyledNoButton>
 	</div>
 	)
 export default Card

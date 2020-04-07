@@ -1,0 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
+
+.CardBody {
+	width: 500px;
+	border: 1px solid #c4c4c4;
+}

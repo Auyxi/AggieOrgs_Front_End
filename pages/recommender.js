@@ -1,6 +1,10 @@
 import React from 'react';
 import SideNavLayout from "../components/SideNavLayout";
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent'
+import Divider from '@material-ui/core/Divider'
+import { withStyles } from '@material-ui/core/styles'
 
 // https://www.robinwieruch.de/react-fetching-data to show how to make the components update in time
 
@@ -8,6 +12,7 @@ const indexStyle = {
     "border-top": "20px solid maroon",
     width: "100%"
 };
+
 
 class Recommender extends React.Component {
     constructor() {
@@ -61,6 +66,10 @@ class Recommender extends React.Component {
                         font-size: 18px;
                         margin-bottom: 15px;
                         margin-top: 40px;
+                    }
+                    #card {
+                        width: 400px;
+
                     }
                     
 

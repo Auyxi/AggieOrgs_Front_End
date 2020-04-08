@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Card from "../components/CardLayout";
+import Card from "../components/Card/Card";
 import SideNavLayout from "../components/SideNavLayout";
 import fetch from 'isomorphic-fetch';
 import { withStyles } from '@material-ui/core/styles'
@@ -56,7 +56,7 @@ class Recommender extends React.Component {
                         hop, modern, and contemporary) for members 
                         of the Bryan/College Station Community, who want 
                         to perform..."
-                    tags = "tag1, tag2, tag3, tag4, tag5, tag6"
+                    tags = "tag1 tag2 tag3 tag4 tag5 tag6"
                 />
 
 

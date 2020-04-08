@@ -1,8 +1,10 @@
 import SideNavLayout from "../components/SideNavLayout";
+import OrgDisplay from "../components/OrgDisplay/OrgDisplay";
 
 const indexStyle = {
-    "border-top": "20px solid maroon",
+    "border-top": "20px solid #500000",
     width: "100%",
+    'padding-top': "50px",
 };
 
 export default function Saved() {
@@ -10,13 +12,24 @@ export default function Saved() {
         <div style={indexStyle}>
             <SideNavLayout />
             <h1>NAME's Saved Organizations</h1>
-            <p>Placeholder for saved organizations.</p>
+
+            <OrgDisplay 
+            	orgName = "Dance Arts Society"
+            	tags = "tag1, tag2, tag3, tag4"
+            	date = "1/1/2020" 
+            />
+            <OrgDisplay 
+            	orgName = "Dance Arts Society"
+            	tags = "tag1, tag2, tag3, tag4"
+            	date = "1/1/2020" 
+            />
 
             <style jsx>{`
                     @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
                     h1 {
                         font-family: 'Muli';
                         font-size: 48px;
+                        margin-left: 100px;
                     }
                     p {
                         font-family: 'Roboto';

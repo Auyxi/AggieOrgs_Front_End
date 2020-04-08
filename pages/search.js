@@ -1,8 +1,9 @@
 import SideNavLayout from "../components/SideNavLayout";
 
 const indexStyle = {
-    "border-top": "20px solid maroon",
-    width: "100%"
+    "border-top": "20px solid #500000",
+    width: "100%",
+    'padding-top': "80px",
 };
 
 export default function Search() {

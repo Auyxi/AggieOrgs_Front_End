@@ -19,8 +19,9 @@ import { withStyles } from '@material-ui/core/styles';
 // styling material ui for later: https://stackoverflow.com/questions/48319372/changing-font-family-of-all-material-uiversion-1-components
 
 const indexStyle = {
-    "border-top": "20px solid maroon",
-    width: "100%"
+    "border-top": "20px solid #500000",
+    width: "100%",
+    'padding-top': "80px",
 };
 
 const StyledButton = withStyles({

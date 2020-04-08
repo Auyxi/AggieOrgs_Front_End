@@ -7,6 +7,11 @@
 	border-top: 15px solid #500000;
 	border-radius: 5px;
 	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+	box-shadow: 10px 5px #c4c4c4;
+	margin-top: auto;
+	margin-bottom: auto;
 }
 
 .OrgName {

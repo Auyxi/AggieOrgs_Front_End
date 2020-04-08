@@ -5,8 +5,9 @@ import React from 'react';
 // https://www.intricatecloud.io/2019/08/adding-google-sign-in-to-your-webapp-a-react-example/
 
 const indexStyle = {
-    "border-top": "20px solid maroon",
-    width: "100%"
+    "border-top": "20px solid #500000",
+    width: "100%",
+    'padding-top': "80px",
 };
 
 class Account extends React.Component {

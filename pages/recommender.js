@@ -9,7 +9,8 @@ import { withStyles } from '@material-ui/core/styles'
 
 const indexStyle = {
     "border-top": "20px solid #500000",
-    width: "100%"
+    width: "100%",
+    'padding-top': '50px'
 };
 
 class Recommender extends React.Component {
@@ -42,8 +43,7 @@ class Recommender extends React.Component {
         return (
             <div style={indexStyle}>
                 <SideNavLayout />
-                <h1>Welcome to AggieOrgs, NAME.</h1>
-                <p>Descriptive text.</p>
+                <h1>Here are your recommended organizations.</h1>
                 <p>{this.state.data.orgId}</p>
                 <p>{this.state.data.userFirstName}</p>
                 <p>{this.state.data.userLastName}</p>
@@ -65,6 +65,7 @@ class Recommender extends React.Component {
                     h1 {
                         font-family: 'Muli';
                         font-size: 48px;
+                        margin-left: 100px;
                     }
                     p {
                         font-family: 'Roboto';

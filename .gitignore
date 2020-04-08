@@ -79,3 +79,5 @@ __pycache__/
 
 # macOs generated file
 .DS_Store
+
+.history/

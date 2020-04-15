@@ -16,6 +16,8 @@ import ToggleButton from '@material-ui/lab/ToggleButton';
 const indexStyle = {
     "border-top": "20px solid maroon",
     width: "100%"
+    //height: "100%",
+    //padding: '100px'
 };
 
 const StyledButton = withStyles({
@@ -34,6 +36,30 @@ const StyledButton = withStyles({
 
     },
 })(Button);
+
+const StyledToggle = withStyles({
+    root: {
+        background: 'white',
+        color: '#800000',
+        padding: '5px 20px 5px 20px',
+        border: '2px solid #800000',
+        'font-family': 'Roboto',
+        'text-decoration': 'none',
+        'margin-right': '30px',
+        'margin-bottom': '30px',
+        '&:hover': {
+            backgroundColor: 'fade(#800000, .2)',
+            color: '#800000',
+            //"font-weight": "bold",
+        },
+        '&:selected': {
+            background: '#800000',
+            color: 'white',
+            "font-weight": "bold",
+        },
+    },
+
+})(ToggleButton);
 
 class Interests extends React.Component {
     state = {
@@ -85,64 +111,85 @@ class Interests extends React.Component {
                     <script src="https://apis.google.com/js/platform.js"></script>
                 </Head>
                 <SideNavLayout />
-                <h1>Welcome to AggieOrgs, NAME.</h1>
-                <p>Descriptive text.</p>
+                <body>
+                    <h1>Welcome to AggieOrgs, NAME.</h1>
+                    <p>Descriptive text.</p>
 
-                <FormControl component="fieldset">
-                    <FormLabel component="legend">Choose categories of interest.</FormLabel>
-                        <FormGroup>
-                            <FormControlLabel
-                                control={<Checkbox checked={this.state.Academic} onChange={this.handleChange('Academic')} value="academic" />}
-                                label="Academic"
-                            />
-                            <FormControlLabel
-                                control={<Checkbox checked={this.state.Religious} onChange={this.handleChange('Religious')} value="religious" />}
-                                label="Religious"
-                            />
-                            <FormControlLabel
-                                control={
-                                <Checkbox checked={this.state['Fine Arts']} onChange={this.handleChange('Fine Arts')} value="fineArts" />
-                                }
-                                label="Fine Arts"
-                            />
-                        </FormGroup>
-                    <FormHelperText> Click button when done</FormHelperText>
-                </FormControl>
+                    <FormControl component="fieldset">
+                        <FormLabel component="legend">Choose categories of interest.</FormLabel>
+                            <FormGroup>
+                                <FormControlLabel
+                                    control={<Checkbox checked={this.state.Academic} onChange={this.handleChange('Academic')} value="academic" />}
+                                    label="Academic"
+                                />
+                                <FormControlLabel
+                                    control={<Checkbox checked={this.state.Religious} onChange={this.handleChange('Religious')} value="religious" />}
+                                    label="Religious"
+                                />
+                                <FormControlLabel
+                                    control={
+                                    <Checkbox checked={this.state['Fine Arts']} onChange={this.handleChange('Fine Arts')} value="fineArts" />
+                                    }
+                                    label="Fine Arts"
+                                />
+                            </FormGroup>
+                        <FormHelperText> Click button when done</FormHelperText>
+                    </FormControl>
 
-                <div className="toggleButtons">
-                    <ToggleButton value="academic"> Academic </ToggleButton>
-                    <ToggleButton value="religious"> Religious </ToggleButton>
-                    <ToggleButton value="fineArts"> Fine Arts </ToggleButton>
-                </div>
+                    <div className="toggleButtons">
+                        <StyledToggle value="academic" > Academic </StyledToggle>
+                        <StyledToggle value="religious"> Religious </StyledToggle>
+                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
+                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
+                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
+                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
+                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
+                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
+                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
+                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
+                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
 
-                <StyledButton 
-                    onClick={this.handleSubmit}
-                    color="secondary"
-                    variant="contained"
-                    href='/recommender'>
-                        Recommender ->
-                </StyledButton>
-                <style jsx>{`
-                    @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
-                    h1 {
-                        font-family: 'Muli';
-                        font-size: 48px;
-                    }
+                    </div>
 
-                    p {
-                        font-family: 'Roboto';
-                        font-size: 24px;
-                        max-width: 700px;
-                    }
-                    p2 {
-                        font-family: 'Roboto';
-                        font-size: 18px;
-                        margin-bottom: 15px;
-                        margin-top: 40px;
-                    }
-                    
+                    <StyledButton 
+                        onClick={this.handleSubmit}
+                        color="secondary"
+                        variant="contained"
+                        href='/recommender'>
+                            Recommender ->
+                    </StyledButton>
+                    <style jsx>{`
+                        @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
+                        h1 {
+                            font-family: 'Muli';
+                            font-size: 48px;
+                        }
 
-                `}</style> 
+                        p {
+                            font-family: 'Roboto';
+                            font-size: 24px;
+                            max-width: 700px;
+                        }
+                        p2 {
+                            font-family: 'Roboto';
+                            font-size: 18px;
+                            margin-bottom: 15px;
+                            margin-top: 40px;
+                        }
+                        body{
+                            padding: 100px;
+                            width: 100%;
+                            height: 100%;
+                            overflow: hidden; 
+                            left: 0;
+                            top:0;
+                        }
+
+                        .toggleButtons {
+                            max-width: 900px;
+                        }
+                    `}</style>
+                    </body> 
             </div>
         ); 
     } 

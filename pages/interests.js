@@ -9,11 +9,30 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link';
 import fetch from 'isomorphic-fetch'
+import { withStyles } from '@material-ui/core/styles';
+import ToggleButton from '@material-ui/lab/ToggleButton';
 
 const indexStyle = {
     "border-top": "20px solid maroon",
     width: "100%"
 };
+
+const StyledButton = withStyles({
+    root: {
+        background: '#800000',
+        color: 'white',
+        padding: '5px 20px 5px 20px',
+        border: "2px solid #800000",
+        'font-family': 'Roboto',
+        'text-decoration': 'none',
+        '&:hover': {
+            background: 'white',
+            color: 'maroon',
+            "font-weight": "bold",
+        }
+
+    },
+})(Button);
 
 class Interests extends React.Component {
     state = {
@@ -85,21 +104,26 @@ class Interests extends React.Component {
                     <FormHelperText> Click button when done</FormHelperText>
                 </FormControl>
 
-                <Button 
+                <div className="toggleButtons">
+                    <ToggleButton value="academic"> Academic </ToggleButton>
+                    <ToggleButton value="religious"> Religious </ToggleButton>
+                    <ToggleButton value="fineArts"> Fine Arts </ToggleButton>
+                </div>
+
+                <StyledButton 
                     onClick={this.handleSubmit}
                     color="secondary"
                     variant="contained"
-                >
-                    <Link href='/recommender'>
+                    href='/recommender'>
                         Recommender ->
-                    </Link>
-                </Button>
+                </StyledButton>
                 <style jsx>{`
                     @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
                     h1 {
                         font-family: 'Muli';
                         font-size: 48px;
                     }
+
                     p {
                         font-family: 'Roboto';
                         font-size: 24px;

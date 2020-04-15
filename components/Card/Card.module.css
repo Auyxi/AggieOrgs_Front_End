@@ -43,6 +43,7 @@
 	margin-right: 30px;
 	font-size: 18px;
 	font-family: 'Roboto';
+	max-width: 100%;
 }
 
 .QuickLook {

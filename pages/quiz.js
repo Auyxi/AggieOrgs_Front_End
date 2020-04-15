@@ -20,8 +20,9 @@ import { withStyles } from '@material-ui/core/styles';
 
 const indexStyle = {
     "border-top": "20px solid #500000",
-    width: "100%",
-    'padding-top': "80px",
+    //width: "100%",
+    //top: "0",
+    //left: "0",
 };
 
 const StyledButton = withStyles({
@@ -31,6 +32,7 @@ const StyledButton = withStyles({
 		padding: '5px 20px 5px 20px',
 		border: "2px solid maroon",
 		'font-family': 'Roboto',
+        'text-decoration': 'none',
 		'&:hover': {
 			background: 'white',
 			color: 'maroon',
@@ -106,7 +108,17 @@ class Quiz extends React.Component {
     }
 
     render() {
-        let majors = ["None", "Computer Science", "Computing", "Computer Engineering"];
+        let majors = ["None", "Accounting", "Aerospace Engineering", "Agribusiness", "Agricultural Communications & Journalism",
+                "Agricultural Economics", "Agricultural Leadership & Development", "Agricultural Science", "Agricultural Systems Management",
+                "Animal Science", "Anthropology", "Applied Mathematical Sciences", "Agricultural Engineering", "Biochemistry",
+                "Bioenvironmental Sciences", "Biological & Agricultural Engineering", "Biology", "Biomedical Engineering", "Biomedical Sciences",
+                "Business Honors", "Chemical Engineering", "Chemistry", "Civil Engineering", "Classics", "Civil Engineering", "Communication",
+                "Community Health", "Computer Engineering", "Computer Science", "Computing", "Construction Science", "Ecological Restoration",
+                "Economics", "Electrical Engineering", "Electronic Systems Engineering Technology", "English", "Entomology", "Environmental Design",
+                "Environmental Engineering", "Environmental Geosciences", "Environmental Studies (COALS)", "Environmental Studies (Geosciences)", 
+                "Finance", "Food Science & Technology", "Food Systems Industry Management", "Forensic & Investigative Sciences", "Forestry", 
+                "General Studies", "Genetics", "Geographic Information Science & Technology", 
+                "Computer Science", "Computing", "Computer Engineering"];
         let majorDegrees = majors.map((major) =>
             <MenuItem value={major}>{major}</MenuItem>
         );
@@ -167,69 +179,66 @@ class Quiz extends React.Component {
             <div style={indexStyle}>
                 <SideNavLayout />   
                 <body>
-                <h1>Welcome to AggieOrgs, NAME.</h1>
-                <p>Descriptive text.</p>
-                <Grid
-                    container
-                    direction="row"
-                    justify="flex-start"
-                    alignItems="flex-end"
+                    <h1>Welcome to AggieOrgs, NAME.</h1>
+                    <p>This is the Student Organization Recommender. Please select your major, minor, and gender to give us a better idea of what organizations would be right for you.</p>
+                    <Grid
+                        container
+                        direction="row"
+                        justify="flex-start"
+                        alignItems="flex-end"
 
-                >
-                    <FormControl style={{minWidth: 200}}>
-                        <p2>Your major:</p2>
-                        <Select 
-                            labelId="major1-label"
-                            id="major1"
-                            name="major1"
-                            value={this.state.major1}
-                            onChange={this.handleChange}
-                        >
-                            {majorDegrees}
-                        </Select>
-                        
-                    </FormControl>
-                    {secondMajor}
-                </Grid>
+                    >
+                        <FormControl style={{minWidth: 200}}>
+                            <p2>Your major:</p2>
+                            <Select 
+                                labelId="major1-label"
+                                id="major1"
+                                name="major1"
+                                value={this.state.major1}
+                                onChange={this.handleChange}
+                            >
+                                {majorDegrees}
+                            </Select>
+                            
+                        </FormControl>
+                        {secondMajor}
+                    </Grid>
 
-                <Grid
-                    container
-                    direction="row"
-                    justify="flex-start"
-                    alignItems="flex-end"
-                >
-                    <FormControl style={{minWidth: 200}}>
-                        <p2>Your minor:</p2>
-                        <Select 
-                            labelId="minor1-label"
-                            id="minor1"
-                            name="minor1"
-                            value={this.state.minor1}
-                            onChange={this.handleChange}
-                        >
-                            {minorDegrees}
-                        </Select>
-                    </FormControl>
-                    {secondMinor}
-                </Grid>
-                <p />
-                <br />
-                <p2>Gender</p2>
-                <RadioGroup aria-label="gender" name="gender"  value={this.state.gender} onChange={this.handleChange} style={{'margin-top': 10}} row>
-                    <FormControlLabel value="male" control={<Radio />} label="Male" />
-                    <FormControlLabel value="female" control={<Radio />} label="Female" />
-                    <FormControlLabel value="other" control={<Radio />} label="Other" />
-                    <FormControlLabel value="prefer not to say" control={<Radio />} label="Prefer not to say" />
-                </RadioGroup>
-                <br /> <br />
-                <StyledButton 
-                    onClick={this.handleSubmit}
-                >
-                    <Link href="/interests" style={{color:'white'}}>
-                        Interests ->
-                    </Link>
-                </StyledButton>
-                </body>
+                    <Grid
+                        container
+                        direction="row"
+                        justify="flex-start"
+                        alignItems="flex-end"
+                    >
+                        <FormControl style={{minWidth: 200}}>
+                            <p2>Your minor:</p2>
+                            <Select 
+                                labelId="minor1-label"
+                                id="minor1"
+                                name="minor1"
+                                value={this.state.minor1}
+                                onChange={this.handleChange}
+                            >
+                                {minorDegrees}
+                            </Select>
+                        </FormControl>
+                        {secondMinor}
+                    </Grid>
+                    <p />
+                    <br />
+                    <p2>Gender</p2>
+                    <RadioGroup aria-label="gender" name="gender"  value={this.state.gender} onChange={this.handleChange} style={{'margin-top': 10}} row>
+                        <FormControlLabel value="male" control={<Radio />} label="Male" />
+                        <FormControlLabel value="female" control={<Radio />} label="Female" />
+                        <FormControlLabel value="other" control={<Radio />} label="Other" />
+                        <FormControlLabel value="prefer not to say" control={<Radio />} label="Prefer not to say" />
+                    </RadioGroup>
+                    <br /> <br />
+                    <StyledButton 
+                        onClick={this.handleSubmit} href="/interests"
+                    >
+                            Interests ->
+                    </StyledButton>
                 <style jsx>{`
                     @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
                     h1 {
@@ -247,9 +256,16 @@ class Quiz extends React.Component {
                         margin-bottom: 15px;
                         margin-top: 40px;
                     }
+
+                    body {
+                        ///width: 100%;
+                        //height: 100%;
+                        //margin: 100px;
+                    }
                     
 
                 `}</style> 
+                </body>
             </div>
             
         );

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
 
 .CardBody {
@@ -53,4 +54,62 @@
 	margin-left: 30px;
 	margin-right: 30px;
 	margin-top: 15px;
+=======
+@import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
+
+.CardBody {
+	width: 500px;
+	height: 380px;
+	border: 1px solid #c4c4c4;
+	border-top: 15px solid #500000;
+	border-radius: 5px;
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+	box-shadow: 10px 5px #c4c4c4;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.OrgName {
+	margin-top: 20px;
+	margin-left: 30px;
+	margin-right: 30px;
+	font-size: 36px;
+	font-family: 'Muli';
+}
+
+.title {
+	font-size: 18px;
+	margin-left: 30px;
+	margin-right: 30px;
+	margin-top: 15px;
+	font-weight: bold;
+	font-family: 'Roboto';
+}
+
+.Tags {
+	font-size: 18px;
+	font-family: 'Roboto';
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+.purpose {
+	margin-left: 30px;
+	margin-right: 30px;
+	font-size: 18px;
+	font-family: 'Roboto';
+	max-width: 100%;
+}
+
+.QuickLook {
+	font-size: 18px;
+	text-decoration: underline;
+	font-weight: bold;
+	font-family: 'Roboto';
+	margin-left: 30px;
+	margin-right: 30px;
+	margin-top: 15px;
+>>>>>>> ff75507b39209d504d00d9f7e22761586bdaf1be
 }

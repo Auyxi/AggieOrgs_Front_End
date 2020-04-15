@@ -3,6 +3,7 @@ import React from 'react';
 import Card from "../components/Card/Card";
 import SideNavLayout from "../components/SideNavLayout";
 import fetch from 'isomorphic-fetch';
+import Head from 'next/head';
 import { withStyles } from '@material-ui/core/styles'
 
 // https://www.robinwieruch.de/react-fetching-data to show how to make the components update in time
@@ -42,6 +43,10 @@ class Recommender extends React.Component {
     render() {
         return (
             <div style={indexStyle}>
+                <Head>
+                    <title>Recommender - AggieOrgs</title>
+                    <script src="https://apis.google.com/js/platform.js"></script>
+                </Head>
                 <SideNavLayout />
                 <h1>Here are your recommended organizations.</h1>
                 <p>{this.state.data.orgId}</p>

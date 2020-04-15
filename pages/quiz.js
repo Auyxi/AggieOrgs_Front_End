@@ -3,6 +3,7 @@ import Select from "@material-ui/core/Select";
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import React from 'react';
+import Head from 'next/head';
 import { MenuItem } from "@material-ui/core";
 //import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
@@ -165,6 +166,10 @@ class Quiz extends React.Component {
 
         return (
             <div style={indexStyle}>
+                <Head>
+                    <title>Quiz - AggieOrgs</title>
+                    <script src="https://apis.google.com/js/platform.js"></script>
+                </Head>
                 <SideNavLayout />   
                 <body>
                 <h1>Welcome to AggieOrgs, NAME.</h1>

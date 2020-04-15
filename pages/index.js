@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Head from 'next/head';
 import Layout from "../components/Layout";
 import SideNavLayout from "../components/SideNavLayout";
 
@@ -15,6 +15,10 @@ class Index extends React.Component {
     render() {
         return (
             <div style={indexStyle}>
+                <Head>
+                    <title>AggieOrgs</title>
+                    <script src="https://apis.google.com/js/platform.js"></script>
+                </Head>
                 <SideNavLayout />
                 <p>Dummy Index/Home page for AggieOrgs.</p>
             </div>

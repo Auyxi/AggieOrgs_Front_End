@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import SideNavLayout from "../components/SideNavLayout";
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -60,6 +61,10 @@ class Interests extends React.Component {
     render() {
         return (
             <div style={indexStyle}>
+                <Head>
+                    <title>Interests - AggieOrgs</title>
+                    <script src="https://apis.google.com/js/platform.js"></script>
+                </Head>
                 <SideNavLayout />
                 <h1>Welcome to AggieOrgs, NAME.</h1>
                 <p>Descriptive text.</p>

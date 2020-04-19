@@ -55,12 +55,11 @@ class Recommender extends React.Component {
 
                 <Card 
                     orgName = "Dance Arts Society"
-                    purpose = "The purpose and objectives of this 
-                        organization shall be to allow members to 
-                        choreograph dances (ballet, tap, jazz, hip 
-                        hop, modern, and contemporary) for members 
-                        of the Bryan/College Station Community, who want 
-                        to perform..."
+                    purpose = "The purpose and objectives of this organization shall be to allow members to choreograph dances (ballet, tap, jazz, hip hop, modern, and contemporary) for members of the Bryan/College Station Community, who want to perform in a show at the end of each semester"
+                    dues = "$65 per semester or $95 per year"
+                    conName = "Emmie Davis"
+                    conEmail = "tamudaspresident@gmail.com"
+                    time = "3-5 Hours"
                     tags = "tag1 tag2 tag3 tag4 tag5 tag6"
                 />
 

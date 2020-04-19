@@ -136,20 +136,6 @@ class Interests extends React.Component {
                         <FormHelperText> Click button when done</FormHelperText>
                     </FormControl>
 
-                    <div className="toggleButtons">
-                        <StyledToggle value="academic" > Academic </StyledToggle>
-                        <StyledToggle value="religious"> Religious </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-
-                    </div>
 
                     <StyledButton 
                         onClick={this.handleSubmit}
@@ -177,12 +163,7 @@ class Interests extends React.Component {
                             margin-top: 40px;
                         }
                         body{
-                            padding: 100px;
-                            width: 100%;
-                            height: 100%;
-                            overflow: hidden; 
-                            left: 0;
-                            top:0;
+
                         }
 
                         .toggleButtons {

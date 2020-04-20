@@ -13,6 +13,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Link from 'next/link';
 import { withStyles } from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 // using material-ui now https://material-ui.com/components/selects/
 // dynamic forms for later https://itnext.io/building-a-dynamic-controlled-form-in-react-together-794a44ee552c
@@ -21,27 +22,36 @@ import { withStyles } from '@material-ui/core/styles';
 
 const indexStyle = {
     "border-top": "20px solid #500000",
-    //width: "100%",
-    //top: "0",
-    //left: "0",
 };
 
 const StyledButton = withStyles({
 	root: {
-		background: 'maroon',
+		background: '#500000',
 		color: 'white',
 		padding: '5px 20px 5px 20px',
-		border: "2px solid maroon",
+		border: "2px solid #500000",
 		'font-family': 'Roboto',
         'text-decoration': 'none',
+        'margin-left': '100px',
 		'&:hover': {
 			background: 'white',
-			color: 'maroon',
+			color: '#500000',
 			"font-weight": "bold",
 		}
 
 	},
 })(Button);
+
+const myTheme = createMuiTheme({
+    palette: {
+        secondary: {
+            main: "#500000"
+        },
+        formControl: {
+            color: "black"
+        }
+    }
+}); 
 
 class Quiz extends React.Component {
     state = {
@@ -118,8 +128,7 @@ class Quiz extends React.Component {
                 "Economics", "Electrical Engineering", "Electronic Systems Engineering Technology", "English", "Entomology", "Environmental Design",
                 "Environmental Engineering", "Environmental Geosciences", "Environmental Studies (COALS)", "Environmental Studies (Geosciences)", 
                 "Finance", "Food Science & Technology", "Food Systems Industry Management", "Forensic & Investigative Sciences", "Forestry", 
-                "General Studies", "Genetics", "Geographic Information Science & Technology", 
-                "Computer Science", "Computing", "Computer Engineering"];
+                "General Studies", "Genetics", "Geographic Information Science & Technology"];
         let majorDegrees = majors.map((major) =>
             <MenuItem value={major}>{major}</MenuItem>
         );
@@ -186,74 +195,81 @@ class Quiz extends React.Component {
                 <body>
                     <h1>Welcome to AggieOrgs, NAME.</h1>
                     <p>This is the Student Organization Recommender. Please select your major, minor, and gender to give us a better idea of what organizations would be right for you.</p>
-                    <Grid
-                        container
-                        direction="row"
-                        justify="flex-start"
-                        alignItems="flex-end"
+                    <div className = "gridContainer">
+                        <Grid
+                            container
+                            direction="row"
+                            justify="flex-start"
+                            alignItems="flex-end"
 
-                    >
-                        <FormControl style={{minWidth: 200}}>
-                            <p2>Your major:</p2>
-                            <Select 
-                                labelId="major1-label"
-                                id="major1"
-                                name="major1"
-                                value={this.state.major1}
-                                onChange={this.handleChange}
-                            >
-                                {majorDegrees}
-                            </Select>
-                            
-                        </FormControl>
-                        {secondMajor}
-                    </Grid>
+                        >
+                            <FormControl style={{minWidth: 200}}>
+                                <p2>Your major:</p2>
+                                <Select 
+                                    labelId="major1-label"
+                                    id="major1"
+                                    name="major1"
+                                    value={this.state.major1}
+                                    onChange={this.handleChange}
+                                >
+                                    {majorDegrees}
+                                </Select>
+                                
+                            </FormControl>
+                            {secondMajor}
+                        </Grid>
 
-                    <Grid
-                        container
-                        direction="row"
-                        justify="flex-start"
-                        alignItems="flex-end"
-                    >
-                        <FormControl style={{minWidth: 200}}>
-                            <p2>Your minor:</p2>
-                            <Select 
-                                labelId="minor1-label"
-                                id="minor1"
-                                name="minor1"
-                                value={this.state.minor1}
-                                onChange={this.handleChange}
-                            >
-                                {minorDegrees}
-                            </Select>
-                        </FormControl>
-                        {secondMinor}
-                    </Grid>
-                    <p />
-                    <br />
-                    <p2>Gender</p2>
-                    <RadioGroup aria-label="gender" name="gender"  value={this.state.gender} onChange={this.handleChange} style={{'margin-top': 10}} row>
-                        <FormControlLabel value="male" control={<Radio />} label="Male" />
-                        <FormControlLabel value="female" control={<Radio />} label="Female" />
-                        <FormControlLabel value="other" control={<Radio />} label="Other" />
-                        <FormControlLabel value="prefer not to say" control={<Radio />} label="Prefer not to say" />
-                    </RadioGroup>
-                    <br /> <br />
+                        <Grid
+                            container
+                            direction="row"
+                            justify="flex-start"
+                            alignItems="flex-end"
+                        >
+                            <FormControl style={{minWidth: 200}}>
+                                <p2>Your minor:</p2>
+                                <Select 
+                                    labelId="minor1-label"
+                                    id="minor1"
+                                    name="minor1"
+                                    value={this.state.minor1}
+                                    onChange={this.handleChange}
+                                >
+                                    {minorDegrees}
+                                </Select>
+                            </FormControl>
+                            {secondMinor}
+                        </Grid>
+                        <p />
+                        <br />
+                        <p2>Gender</p2>
+                        <MuiThemeProvider theme={myTheme}>
+                            <RadioGroup aria-label="gender" name="gender"  value={this.state.gender} onChange={this.handleChange} style={{'margin-top': 10}} row>
+                                <FormControlLabel color="secondary" value="male" control={<Radio />} label="Male" />
+                                <FormControlLabel color="secondary" value="female" control={<Radio />} label="Female" />
+                                <FormControlLabel color="secondary" value="other" control={<Radio />} label="Other" />
+                                <FormControlLabel color="secondary" value="prefer not to say" control={<Radio />} label="Prefer not to say" />
+                            </RadioGroup>
+                        </MuiThemeProvider>    
+                    </div>
                     <StyledButton 
                         onClick={this.handleSubmit} href="/interests"
                     >
                             Interests ->
                     </StyledButton>
+                    <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylyski for CSCE 482 @ TAMU</footer>
                 <style jsx>{`
                     @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
                     h1 {
                         font-family: 'Muli';
                         font-size: 48px;
+                        margin-left: 100px;
+                        padding-top: 50px;
                     }
                     p {
                         font-family: 'Roboto';
                         font-size: 24px;
                         max-width: 700px;
+                        margin-left: 100px;
                     }
                     p2 {
                         font-family: 'Roboto';
@@ -261,13 +277,31 @@ class Quiz extends React.Component {
                         margin-bottom: 15px;
                         margin-top: 40px;
                     }
+                    .gridContainer {
+                        margin-left: 100px;
+                        margin-bottom: 30px;
 
+                    }
+
+                    .MuiRadio-colorPrimary {
+                        color: #500000;
+                    }
                     body {
                         ///width: 100%;
                         //height: 100%;
                         //margin: 100px;
                     }
                     
+                    footer{
+                        text-align: center;
+                        width: 100%;
+                        font-family: 'Roboto';
+                        font-size: 14px;
+                        color: #a7a7a7;
+                        position: absolute;
+                        bottom: 0;
+                        padding-bottom: 10px;
+                    }
 
                 `}</style> 
                 </body>

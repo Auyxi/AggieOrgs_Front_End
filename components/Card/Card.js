@@ -8,10 +8,10 @@ import { withStyles } from '@material-ui/core/styles'
 
 const StyledYesButton = withStyles({
 	root: {
-		background: '#800000',
+		background: '#500000',
 		color: 'white',
 		padding: '5px 20px 5px 20px',
-		border: "2px solid #800000",
+		border: "2px solid #500000",
 		width: '150px',
 		height: '50px',
 		margin: '20px',

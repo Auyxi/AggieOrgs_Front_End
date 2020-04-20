@@ -4,7 +4,6 @@ import OrgDisplay from "../components/OrgDisplay/OrgDisplay";
 const indexStyle = {
     "border-top": "20px solid #500000",
     width: "100%",
-    'padding-top': "50px",
 };
 
 export default function Saved() {
@@ -23,6 +22,7 @@ export default function Saved() {
             	tags = "tag1, tag2, tag3, tag4"
             	date = "1/1/2020" 
             />
+            <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylyski for CSCE 482 @ TAMU</footer>
 
             <style jsx>{`
                     @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
@@ -30,6 +30,7 @@ export default function Saved() {
                         font-family: 'Muli';
                         font-size: 48px;
                         margin-left: 100px;
+                        padding-top: 50px;
                     }
                     p {
                         font-family: 'Roboto';
@@ -41,6 +42,16 @@ export default function Saved() {
                         font-size: 18px;
                         margin-bottom: 15px;
                         margin-top: 40px;
+                    }
+                    footer{
+                        text-align: center;
+                        width: 100%;
+                        font-family: 'Roboto';
+                        font-size: 14px;
+                        color: #a7a7a7;
+                        position: absolute;
+                        bottom: 0;
+                        padding-bottom: 10px;
                     }
                     
 

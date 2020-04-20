@@ -4,7 +4,6 @@ import Head from 'next/head';
 const indexStyle = {
     "border-top": "20px solid #500000",
     width: "100%",
-    'padding-top': "80px",
 };
 
 export default function Search() {
@@ -17,11 +16,13 @@ export default function Search() {
             <SideNavLayout />
             <h1>All Organizations</h1>
             <p>Placeholder for search system.</p>
+            <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylyski for CSCE 482 @ TAMU</footer>
             <style jsx>{`
                     @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
                     h1 {
                         font-family: 'Muli';
                         font-size: 48px;
+                        padding-top: 50px;
                     }
                     p {
                         font-family: 'Roboto';
@@ -35,6 +36,16 @@ export default function Search() {
                         margin-top: 40px;
                     }
                     
+                    footer{
+                        text-align: center;
+                        width: 100%;
+                        font-family: 'Roboto';
+                        font-size: 14px;
+                        color: #a7a7a7;
+                        position: absolute;
+                        bottom: 0;
+                        padding-bottom: 10px;
+                    }
 
                 `}</style> 
         </div>

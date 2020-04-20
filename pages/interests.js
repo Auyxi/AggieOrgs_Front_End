@@ -12,24 +12,40 @@ import Link from 'next/link';
 import fetch from 'isomorphic-fetch'
 import { withStyles } from '@material-ui/core/styles';
 import ToggleButton from '@material-ui/lab/ToggleButton';
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 var store = require('store');
 
 const indexStyle = {
-    "border-top": "20px solid maroon",
+    "border-top": "20px solid #500000",
     width: "100%"
     //height: "100%",
     //padding: '100px'
 };
 
+const myTheme = createMuiTheme({
+    palette: {
+        secondary: {
+            main: "#500000"
+        },
+        primary: {
+            main: '#500000'
+        },
+        formControl: {
+            color: "black"
+        }
+    }
+}); 
+
 const StyledButton = withStyles({
     root: {
-        background: '#800000',
+        background: '#500000',
         color: 'white',
         padding: '5px 20px 5px 20px',
-        border: "2px solid #800000",
+        border: "2px solid #500000",
         'font-family': 'Roboto',
         'text-decoration': 'none',
+        'margin-left': '100px',
         '&:hover': {
             background: 'white',
             color: 'maroon',
@@ -128,43 +144,110 @@ class Interests extends React.Component {
                 <SideNavLayout />
                 <body>
                     <h1>Welcome to AggieOrgs, NAME.</h1>
-                    <p>Descriptive text.</p>
+                    <p>What are you looking for in an organization?</p>
+                    <div className = "checks">
+                        <FormControl component="fieldset">
+                            <FormLabel component="legend"></FormLabel>
+                                <FormGroup>
+                                    <MuiThemeProvider theme={myTheme}>
+                                    <div className = "row1">
+                                        <FormControlLabel
+                                            control={<Checkbox checked={this.state.Academic} onChange={this.handleChange('Academic')} value="academic" />}
+                                            label="Academic"
+                                        />
+                                        <FormControlLabel
+                                            control={<Checkbox checked={this.state.Religious} onChange={this.handleChange('Religious')} value="religious" />}
+                                            label="Religious"
+                                        />
+                                        <FormControlLabel
+                                            control={
+                                            <Checkbox checked={this.state['Fine Arts']} onChange={this.handleChange('Fine Arts')} value="fineArts" />
+                                            }
+                                            label="Fine Arts"
+                                        />
+                                        <FormControlLabel
+                                            control={<Checkbox checked={this.state.Academic} onChange={this.handleChange('Academic')} value="academic" />}
+                                            label="Academic"
+                                        />
+                                        <FormControlLabel
+                                            control={<Checkbox checked={this.state.Religious} onChange={this.handleChange('Religious')} value="religious" />}
+                                            label="Religious"
+                                        />
+                                        <FormControlLabel
+                                            control={
+                                            <Checkbox checked={this.state['Fine Arts']} onChange={this.handleChange('Fine Arts')} value="fineArts" />
+                                            }
+                                            label="Fine Arts"
+                                        />
+                                    </div>
+                                    <div className = "row2">
+                                        <FormControlLabel
+                                            control={<Checkbox checked={this.state.Academic} onChange={this.handleChange('Academic')} value="academic" />}
+                                            label="Academic"
+                                        />
+                                        <FormControlLabel
+                                            control={<Checkbox checked={this.state.Religious} onChange={this.handleChange('Religious')} value="religious" />}
+                                            label="Religious"
+                                        />
+                                        <FormControlLabel
+                                            control={
+                                            <Checkbox checked={this.state['Fine Arts']} onChange={this.handleChange('Fine Arts')} value="fineArts" />
+                                            }
+                                            label="Fine Arts"
+                                        />
+                                        <FormControlLabel
+                                            control={<Checkbox checked={this.state.Academic} onChange={this.handleChange('Academic')} value="academic" />}
+                                            label="Academic"
+                                        />
+                                        <FormControlLabel
+                                            control={<Checkbox checked={this.state.Religious} onChange={this.handleChange('Religious')} value="religious" />}
+                                            label="Religious"
+                                        />
+                                        <FormControlLabel
+                                            control={
+                                            <Checkbox checked={this.state['Fine Arts']} onChange={this.handleChange('Fine Arts')} value="fineArts" />
+                                            }
+                                            label="Fine Arts"
+                                        />
+                                    </div>
 
-                    <FormControl component="fieldset">
-                        <FormLabel component="legend">Choose categories of interest.</FormLabel>
-                            <FormGroup>
-                                <FormControlLabel
-                                    control={<Checkbox checked={this.state.Academic} onChange={this.handleChange('Academic')} value="academic" />}
-                                    label="Academic"
-                                />
-                                <FormControlLabel
-                                    control={<Checkbox checked={this.state.Religious} onChange={this.handleChange('Religious')} value="religious" />}
-                                    label="Religious"
-                                />
-                                <FormControlLabel
-                                    control={
-                                    <Checkbox checked={this.state['Fine Arts']} onChange={this.handleChange('Fine Arts')} value="fineArts" />
-                                    }
-                                    label="Fine Arts"
-                                />
-                            </FormGroup>
-                        <FormHelperText> Click button when done</FormHelperText>
-                    </FormControl>
+                                    <div className = "row3">
+                                        <FormControlLabel
+                                            control={<Checkbox checked={this.state.Academic} onChange={this.handleChange('Academic')} value="academic" />}
+                                            label="Academic"
+                                        />
+                                        <FormControlLabel
+                                            control={<Checkbox checked={this.state.Religious} onChange={this.handleChange('Religious')} value="religious" />}
+                                            label="Religious"
+                                        />
+                                        <FormControlLabel
+                                            control={
+                                            <Checkbox checked={this.state['Fine Arts']} onChange={this.handleChange('Fine Arts')} value="fineArts" />
+                                            }
+                                            label="Fine Arts"
+                                        />
+                                        <FormControlLabel
+                                            control={<Checkbox checked={this.state.Academic} onChange={this.handleChange('Academic')} value="academic" />}
+                                            label="Academic"
+                                        />
+                                        <FormControlLabel
+                                            control={<Checkbox checked={this.state.Religious} onChange={this.handleChange('Religious')} value="religious" />}
+                                            label="Religious"
+                                        />
+                                        <FormControlLabel
+                                            control={
+                                            <Checkbox checked={this.state['Fine Arts']} onChange={this.handleChange('Fine Arts')} value="fineArts" />
+                                            }
+                                            label="Fine Arts"
+                                        />
+                                    </div>
+                                    </MuiThemeProvider>
 
-                    <div className="toggleButtons">
-                        <StyledToggle value="academic" > Academic </StyledToggle>
-                        <StyledToggle value="religious"> Religious </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-                        <StyledToggle value="fineArts"> Fine Arts </StyledToggle>
-
+                                </FormGroup>
+                            <FormHelperText> Click button when done</FormHelperText>
+                        </FormControl>
                     </div>
+
 
                     <StyledButton 
                         onClick={this.handleSubmit}
@@ -174,36 +257,55 @@ class Interests extends React.Component {
                     >
                             Recommender ->
                     </StyledButton>
+                    <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylyski for CSCE 482 @ TAMU</footer>
                     <style jsx>{`
                         @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
                         h1 {
-                            font-family: 'Muli';
-                            font-size: 48px;
-                        }
+                        font-family: 'Muli';
+                        font-size: 48px;
+                        margin-left: 100px;
+                        padding-top: 50px;
+                    }
+                    p {
+                        font-family: 'Roboto';
+                        font-size: 24px;
+                        max-width: 700px;
+                        margin-left: 100px;
+                    }
+                    p2 {
+                        font-family: 'Roboto';
+                        font-size: 18px;
+                        margin-bottom: 15px;
+                        margin-top: 40px;
+                    }
+                    .checks {
+                        margin-left: 100px;
+                        margin-bottom: 50px;
 
-                        p {
-                            font-family: 'Roboto';
-                            font-size: 24px;
-                            max-width: 700px;
-                        }
-                        p2 {
-                            font-family: 'Roboto';
-                            font-size: 18px;
-                            margin-bottom: 15px;
-                            margin-top: 40px;
-                        }
-                        body{
-                            padding: 100px;
-                            width: 100%;
-                            height: 100%;
-                            overflow: hidden; 
-                            left: 0;
-                            top:0;
-                        }
+                    }
+                    .checks div{
+                        display: block;
+                        padding-bottom: 20px;
+                    }
+                    .MuiRadio-colorPrimary {
+                        color: #500000;
+                    }
+                    body {
+                        ///width: 100%;
+                        //height: 100%;
+                        //margin: 100px;
+                    }
+                    footer{
+                        text-align: center;
+                        width: 100%;
+                        font-family: 'Roboto';
+                        font-size: 14px;
+                        color: #a7a7a7;
+                        position: absolute;
+                        bottom: 0;
+                        padding-bottom: 10px;
+                    }
 
-                        .toggleButtons {
-                            max-width: 900px;
-                        }
                     `}</style>
                     </body> 
             </div>

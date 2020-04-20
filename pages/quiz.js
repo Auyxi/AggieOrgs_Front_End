@@ -2,6 +2,7 @@ import SideNavLayout from "../components/SideNavLayout";
 import Select from "@material-ui/core/Select";
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
+import Router from 'next/router'
 import React from 'react';
 import Head from 'next/head';
 import { MenuItem } from "@material-ui/core";
@@ -14,10 +15,14 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Link from 'next/link';
 import { withStyles } from '@material-ui/core/styles';
 
+var store = require('store');
+
 // using material-ui now https://material-ui.com/components/selects/
 // dynamic forms for later https://itnext.io/building-a-dynamic-controlled-form-in-react-together-794a44ee552c
 // react forms doc https://reactjs.org/docs/forms.html
 // styling material ui for later: https://stackoverflow.com/questions/48319372/changing-font-family-of-all-material-uiversion-1-components
+
+// fixing redirect https://stackoverflow.com/questions/58173809/next-js-redirect-from-to-another-page
 
 const indexStyle = {
     "border-top": "20px solid #500000",
@@ -44,16 +49,48 @@ const StyledButton = withStyles({
 })(Button);
 
 class Quiz extends React.Component {
-    state = {
-        showMajor2: false,
-        showMinor2: false,
+    constructor(props) {
+        super(props)
 
-        major1: "None",
-        major2: "None",
-        minor1: "None",
-        minor2: "None",
-        gender: "Prefer not to say"
-    };
+        this.state = {
+            token: "",
+
+            showMajor2: false,
+            showMinor2: false,
+    
+            major1: "None",
+            major2: "None",
+            minor1: "None",
+            minor2: "None",
+            gender: "Prefer not to say"
+        };
+    }
+
+    componentDidMount() {
+        this.setState({
+            token: store.get('user').id
+        });
+
+        if (!this.props.loggedIn) {
+            Router.replace("/account");
+        }
+    }
+
+    componentDidUpdate() {
+        const {pathname} = Router;
+        if (pathname == '/quiz' && !store.get('id')) {
+            Router.replace('/account');
+        }
+    }
+
+    getDerivedStateFromProps(props, state) {
+        if (this.props.loggedIn) {
+            console.log("sign in");
+        }
+        else {
+            Router.replace("/quiz", "/account", {shallow: true});
+        }
+    }
 
     handleChange = event => {
         const name = event.target.name;
@@ -76,10 +113,11 @@ class Quiz extends React.Component {
         };
         console.log(data);
 
-        fetch('https://aggieorgs-backend-270016.appspot.com/api/v1/user/27ea0040-5d82-11ea-bf1c-8b58b3001807', {
+        fetch('https://api.aggieorgs.com/api/v1/account/'.concat(store.get('id')), {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': this.state.token
             },
             body: JSON.stringify(data),
         })
@@ -109,6 +147,11 @@ class Quiz extends React.Component {
     }
 
     render() {
+        const {pathname} = Router;
+        if (pathname == '/quiz' && !store.get('id')) {
+            Router.replace('/account');
+        }
+        
         let majors = ["None", "Accounting", "Aerospace Engineering", "Agribusiness", "Agricultural Communications & Journalism",
                 "Agricultural Economics", "Agricultural Leadership & Development", "Agricultural Science", "Agricultural Systems Management",
                 "Animal Science", "Anthropology", "Applied Mathematical Sciences", "Agricultural Engineering", "Biochemistry",
@@ -240,7 +283,7 @@ class Quiz extends React.Component {
                     </RadioGroup>
                     <br /> <br />
                     <StyledButton 
-                        onClick={this.handleSubmit} href="/interests"
+                        onClick={this.handleSubmit} href='/interests'
                     >
                             Interests ->
                     </StyledButton>
@@ -275,6 +318,19 @@ class Quiz extends React.Component {
             
         );
     }
+}
+
+Quiz.getInitialProps = (ctx) => {
+    if (!store.get('user')) {
+        store.set('user', {
+            id: "",
+            firstName: "",
+            lastName: "",
+            isSignedIn: false,
+        })
+    }
+
+    return { loggedIn: store.get('user').isSignedIn}
 }
 
 export default Quiz;

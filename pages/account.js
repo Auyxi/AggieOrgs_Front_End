@@ -2,6 +2,8 @@ import SideNavLayout from "../components/SideNavLayout";
 import Head from 'next/head';
 import React from 'react';
 
+var store = require('store');
+
 // https://www.intricatecloud.io/2019/08/adding-google-sign-in-to-your-webapp-a-react-example/
 
 const indexStyle = {
@@ -19,6 +21,8 @@ class Account extends React.Component {
             lastName: "",
             isSignedIn: false,
         }
+
+        this.signOut = this.signOut.bind(this);
     }
 
     componentDidMount() {
@@ -54,6 +58,8 @@ class Account extends React.Component {
             firstName: profile.getGivenName(),
             lastName: profile.getFamilyName(),
             isSignedIn: true
+        }, () => {
+            store.set('user', this.state);
         });
 
         // send id token to backend in JSON
@@ -74,6 +80,7 @@ class Account extends React.Component {
         .then((response) => response.json())
         .then((data) => {
             console.log('Success - GET: ', data);
+            store.set('id', data.userId); 
         })
         .catch((error) => {
             fetch('https://api.aggieorgs.com/api/v1/account', {
@@ -87,6 +94,7 @@ class Account extends React.Component {
             .then((response) => response.json())
             .then((data) => {
                 console.log('Success - POST: ', data);
+                store.set('id', data.userId); 
             })
             .catch((error) => {
                 console.log('Error: ', error);
@@ -95,27 +103,34 @@ class Account extends React.Component {
     }
 
     signOut() {
-        let auth2 = gapi.auth2.getAuthInstance(); 
+        let auth2 = gapi.auth2.getAuthInstance();
 
-        auth2.signOut().then(function () {
-            this.setState({
-                isSignedIn: false
-            });
-
-            console.log('User signed out.');
+        store.set('user', this.state);
+        store.remove('id');
+        console.log(store.get('user'));
+        
+        this.setState({
+            isSignedIn: false
         });
+        auth2.signOut(); 
+
+        console.log('User signed out.');
     }
 
     getContent() {
         const signOut = this.signOut.bind(this);
 
+        if (!store.get('user')) {
+            store.set('user', this.state);
+        }
+
         if (this.state.isSignedIn) {
             return (
                 <div>
                     <h1>Welcome to AggieOrgs, {this.state.firstName}</h1>
-                    <p>ID: {this.state.id}</p>
-                    <p>First Name: {this.state.firstName}</p>
-                    <p>Last Name: {this.state.lastName}</p>
+                    <p>ID: {store.get('user').id}</p>
+                    <p>First Name: {store.get('user').firstName}</p>
+                    <p>Last Name: {store.get('user').lastName}</p>
                     <a href="account" onClick={this.signOut}>Sign out of Google</a>
                     <style jsx>{`
                         @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');

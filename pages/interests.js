@@ -13,6 +13,8 @@ import fetch from 'isomorphic-fetch'
 import { withStyles } from '@material-ui/core/styles';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 
+var store = require('store');
+
 const indexStyle = {
     "border-top": "20px solid maroon",
     width: "100%"
@@ -62,10 +64,22 @@ const StyledToggle = withStyles({
 })(ToggleButton);
 
 class Interests extends React.Component {
-    state = {
-        Academic: false,
-        Religious: false,
-        "Fine Arts": false
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            token: "",
+
+            Academic: false,
+            Religious: false,
+            "Fine Arts": false
+        };
+    }
+
+    componentDidMount() {
+        this.setState({
+            token: store.get('user').id
+        });
     }
 
     handleChange = name => event => {
@@ -87,10 +101,11 @@ class Interests extends React.Component {
             userInterestTags: categories
         };
 
-        fetch('https://aggieorgs-backend-270016.appspot.com/api/v1/user/27ea0040-5d82-11ea-bf1c-8b58b3001807', {
+        fetch('https://api.aggieorgs.com/api/v1/account/'.concat(store.get('id')), {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': this.state.token
             },
             body: JSON.stringify(data),
         })
@@ -155,7 +170,8 @@ class Interests extends React.Component {
                         onClick={this.handleSubmit}
                         color="secondary"
                         variant="contained"
-                        href='/recommender'>
+                        href='/recommender'
+                    >
                             Recommender ->
                     </StyledButton>
                     <style jsx>{`

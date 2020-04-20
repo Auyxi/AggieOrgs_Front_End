@@ -1,4 +1,5 @@
 import SideNavLayout from "../components/SideNavLayout";
+import Head from 'next/head';
 
 const indexStyle = {
     "border-top": "20px solid #500000",
@@ -9,6 +10,10 @@ const indexStyle = {
 export default function Search() {
     return (
         <div style={indexStyle}>
+            <Head>
+                <title>Search - AggieOrgs</title>
+                <script src="https://apis.google.com/js/platform.js"></script>
+            </Head>
             <SideNavLayout />
             <h1>All Organizations</h1>
             <p>Placeholder for search system.</p>

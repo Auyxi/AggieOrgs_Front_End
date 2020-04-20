@@ -1,5 +1,6 @@
 import SideNavLayout from "../components/SideNavLayout";
 import OrgDisplay from "../components/OrgDisplay/OrgDisplay";
+import Head from 'next/head';
 
 const indexStyle = {
     "border-top": "20px solid #500000",
@@ -10,6 +11,10 @@ const indexStyle = {
 export default function Saved() {
     return (
         <div style={indexStyle}>
+            <Head>
+                <title>Saved - AggieOrgs</title>
+                <script src="https://apis.google.com/js/platform.js"></script>
+            </Head>
             <SideNavLayout />
             <h1>NAME's Saved Organizations</h1>
 

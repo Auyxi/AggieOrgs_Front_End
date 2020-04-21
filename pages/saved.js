@@ -122,7 +122,7 @@ class Saved extends React.Component {
         console.log("inside of listOrgs");
         console.log(orgs);
         var items = orgs.forEach((elem) => {
-            console.log(elem.orgName);
+            elem.orgName;
         });
         console.log("print");
         for (var i = 0; i < print.length; i++) {

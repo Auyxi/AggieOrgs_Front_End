@@ -227,7 +227,7 @@ class Quiz extends React.Component {
             secondMinor = <StyledButton style={{'margin-left': 20}} onClick={this.addMinorClickHandler}>Add new minor</StyledButton>
         }
 
-
+        var name = store.get('user').firstName;
         return (
             <div style={indexStyle}>
                 <Head>
@@ -236,7 +236,7 @@ class Quiz extends React.Component {
                 </Head>
                 <SideNavLayout />   
                 <body>
-                    <h1>Welcome to AggieOrgs, NAME.</h1>
+                    <h1>Welcome to AggieOrgs, {name}.</h1>
                     <p>This is the Student Organization Recommender. Please select your major, minor, and gender to give us a better idea of what organizations would be right for you.</p>
                     <div className = "gridContainer">
                         <Grid

@@ -136,6 +136,7 @@ class Interests extends React.Component {
 
     render() {
         var text = "<- Quiz"
+        var name = store.get('user').firstName;
         return (
             <div style={indexStyle}>
                 <Head>
@@ -144,7 +145,7 @@ class Interests extends React.Component {
                 </Head>
                 <SideNavLayout />
                 <body>
-                    <h1>Welcome to AggieOrgs, NAME.</h1>
+                    <h1>Welcome to AggieOrgs, {name}.</h1>
                     <p>What are you looking for in an organization?</p>
                     <div className = "checks">
                         <FormControl component="fieldset">

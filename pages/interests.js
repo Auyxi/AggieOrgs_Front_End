@@ -135,6 +135,7 @@ class Interests extends React.Component {
     }
 
     render() {
+        var text = "<- Quiz"
         return (
             <div style={indexStyle}>
                 <Head>
@@ -248,9 +249,23 @@ class Interests extends React.Component {
                         </FormControl>
                     </div>
 
-
+                    <Link href="/quiz">
+                        <StyledButton 
+                            color="secondary"
+                            variant="contained"
+                            
+                        >
+                            {text}                            
+                       </StyledButton>
+                    </Link>
                     <StyledButton 
                         onClick={this.handleSubmit}
+                        color="secondary"
+                        variant="contained"
+                    >
+                            Submit
+                    </StyledButton>
+                    <StyledButton 
                         color="secondary"
                         variant="contained"
                         href='/recommender'

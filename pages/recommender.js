@@ -6,6 +6,9 @@ import fetch from 'isomorphic-fetch';
 import Head from 'next/head';
 import { withStyles } from '@material-ui/core/styles'
 
+var store = require('store');
+var queue = [];
+
 // https://www.robinwieruch.de/react-fetching-data to show how to make the components update in time
 
 const indexStyle = {
@@ -17,26 +20,162 @@ class Recommender extends React.Component {
     constructor() {
         super();
         this.state = {
+            recs: [],
             data: {}
         }
+        this.likeOrg = this.likeOrg.bind(this);
+        this.dislikeOrg = this.dislikeOrg.bind(this);
     }
 
     componentDidMount() {
-        fetch('https://aggieorgs-backend-270016.appspot.com/api/v1/organization/')
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            this.setState({data: data}, () => 
-                {console.log(this.state);}
-            );
-        });
+        if (queue.length === 0) {
+            var recAPI = "https://api.aggieorgs.com/api/v1/recommendation?userId=" + store.get('id') + "&numOrgs=5"
+            fetch(recAPI, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': store.get('user').id
+                }
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                data.forEach(element => queue.push(element.orgId));
+                console.log(queue);
+            })
+            .catch((error) => {
+                console.log('Error: ', error);
+            })
+            .then(() => {
+                var nextOrg = queue.pop();
+                var orgAPI = 'https://api.aggieorgs.com/api/v1/organization/' + nextOrg;
+
+                fetch(orgAPI)
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    this.setState({data: data}, () => 
+                        {console.log(this.state);}
+                    );
+                });
+            })
+        }
     }
 
     handleChange = name => event => {
         this.setState({[name]: event.target.checked }, () =>
             {console.log(this.state);}
         );
+    }
+
+    likeOrg() {
+        console.log("liked");
+        var likedAPI = "https://api.aggieorgs.com/api/v1/account/" + store.get('id') + ":likeOrg"
+        var sendBody = { orgId : this.state.data.orgId };
+
+        fetch(likedAPI, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': store.get('user').id
+            },
+            body : JSON.stringify(sendBody)
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success - POST: ', data);
+        })
+        .then(() => {
+            var nextOrg = queue.pop();
+            var orgAPI = 'https://api.aggieorgs.com/api/v1/organization/' + nextOrg;
+
+            fetch(orgAPI)
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                this.setState({data: data}, () => 
+                    {console.log(this.state);}
+                );
+            });
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+
+        if (queue.length < 3) {
+            var recAPI = "https://api.aggieorgs.com/api/v1/recommendation?userId=" + store.get('id') + "&numOrgs=5"
+            fetch(recAPI, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': store.get('user').id
+                }
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                data.forEach(element => queue.push(element.orgId));
+                console.log(queue);
+            })
+            .catch((error) => {
+                console.log('Error: ', error);
+            })
+        }
+    }
+
+    dislikeOrg() {
+        console.log("dislike");
+        var likedAPI = "https://api.aggieorgs.com/api/v1/account/" + store.get('id') + ":dislikeOrg"
+        var sendBody = { orgId : this.state.data.orgId };
+
+        fetch(likedAPI, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': store.get('user').id
+            },
+            body : JSON.stringify(sendBody)
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success - POST: ', data);
+        })
+        .then(() => {
+            var nextOrg = queue.pop();
+            var orgAPI = 'https://api.aggieorgs.com/api/v1/organization/' + nextOrg;
+
+            fetch(orgAPI)
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                this.setState({data: data}, () => 
+                    {console.log(this.state);}
+                );
+            });
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+
+        if (queue.length < 3) {
+            var recAPI = "https://api.aggieorgs.com/api/v1/recommendation?userId=" + store.get('id') + "&numOrgs=5"
+            fetch(recAPI, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': store.get('user').id
+                }
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                data.forEach(element => queue.push(element.orgId));
+                console.log(queue);
+            })
+            .catch((error) => {
+                console.log('Error: ', error);
+            })
+        }
     }
 
     render() {
@@ -48,18 +187,17 @@ class Recommender extends React.Component {
                 </Head>
                 <SideNavLayout />
                 <h1>Here are your recommended organizations.</h1>
-                <p>{this.state.data.orgId}</p>
-                <p>{this.state.data.userFirstName}</p>
-                <p>{this.state.data.userLastName}</p>
 
                 <Card 
-                    orgName = "Dance Arts Society"
-                    purpose = "The purpose and objectives of this organization shall be to allow members to choreograph dances (ballet, tap, jazz, hip hop, modern, and contemporary) for members of the Bryan/College Station Community, who want to perform in a show at the end of each semester"
-                    dues = "$65 per semester or $95 per year"
-                    conName = "Emmie Davis"
-                    conEmail = "tamudaspresident@gmail.com"
-                    time = "3-5 Hours"
-                    tags = "tag1 tag2 tag3 tag4 tag5 tag6"
+                    orgName = {this.state.data.orgName}
+                    purpose = {this.state.data.orgPurpose}
+                    dues = {this.state.data.orgMembershipFee}
+                    conName = "None"
+                    conEmail = {this.state.data.orgEmail}
+                    time = {this.state.data.orgTimeCommitment}
+                    tags = {this.state.data.orgTags}
+                    liked = {this.likeOrg}
+                    disliked = {this.dislikeOrg}
                 />
 
                 <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylyski for CSCE 482 @ TAMU</footer>

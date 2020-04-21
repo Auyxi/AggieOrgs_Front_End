@@ -295,7 +295,12 @@ class Quiz extends React.Component {
                         </MuiThemeProvider>    
                     </div>
                     <StyledButton 
-                        onClick={this.handleSubmit} href='/interests'
+                        onClick={this.handleSubmit}
+                    >
+                            Submit
+                    </StyledButton>
+                    <StyledButton 
+                        href='/interests'
                     >
                             Interests ->
                     </StyledButton>

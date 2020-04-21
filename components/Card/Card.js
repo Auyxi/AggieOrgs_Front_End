@@ -50,7 +50,7 @@ const StyledNoButton = withStyles({
 	},
 })(Button);
 
-const Card = ({orgName, purpose, dues, conName, conEmail, time}) => ( 
+const Card = ({orgName, purpose, dues, conName, conEmail, time, liked, disliked}) => ( 
 	<div className = {styles.CardBody}>
 		<div className = {styles.OrgName}>{orgName}</div>
 		<div className = {styles.title}>Purpose</div>
@@ -61,8 +61,8 @@ const Card = ({orgName, purpose, dues, conName, conEmail, time}) => (
 		<div className = {styles.contact}>{conName} | {conEmail}</div>
 		<div className = {styles.title}>Weekly Time Committment</div>
 		<div className = {styles.time}>{time}</div>
-		<StyledYesButton>Interested!</StyledYesButton>
-		<StyledNoButton>No, thanks!</StyledNoButton>
+		<StyledYesButton onClick = {liked}>Interested!</StyledYesButton>
+		<StyledNoButton onClick = {disliked}>No, thanks!</StyledNoButton>
 	</div>
 	);
 

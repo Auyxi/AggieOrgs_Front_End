@@ -186,7 +186,7 @@ class Account extends React.Component {
                         color="secondary"
                         variant="contained"
                     >
-                            Clear saved organisations / reset recommendations
+                            Clear saved organizations / reset recommendations
                     </StyledButton>
                     <StyledButton 
                         onClick={this.signOut}

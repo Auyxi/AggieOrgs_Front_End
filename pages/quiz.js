@@ -340,7 +340,7 @@ class Quiz extends React.Component {
                     p {
                         font-family: 'Roboto';
                         font-size: 24px;
-                        max-width: 700px;
+                        max-width: 900px;
                         margin-left: 100px;
                     }
                     p2 {

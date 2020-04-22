@@ -189,7 +189,7 @@ class Saved extends React.Component {
                         }
 
                         .pageContent {
-                            padding-bottom: 2.5rem;
+                            padding-bottom: 4.5rem;
                         }
                         footer{
                             text-align: center;

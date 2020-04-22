@@ -156,12 +156,14 @@ class Saved extends React.Component {
                     <script src="https://apis.google.com/js/platform.js"></script>
                 </Head>
                 <SideNavLayout />
-                <h1>{name}'s Saved Organizations</h1>
+                <div className = "pageContainer">
+                    <div className = "pageContent">
+                        <h1>{name}'s Saved Organizations</h1>
 
-                {display}
-
-                <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylski for CSCE 482 @ TAMU</footer>
-    
+                        {display}
+                    </div>
+                    <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylski for CSCE 482 @ TAMU</footer>
+                </div>
                 <style jsx>{`
                         @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
                         h1 {
@@ -181,6 +183,14 @@ class Saved extends React.Component {
                             margin-bottom: 15px;
                             margin-top: 40px;
                         }
+                        .pageContainer {
+                            position: relative;
+                            min-height: 100vh;
+                        }
+
+                        .pageContent {
+                            padding-bottom: 2.5rem;
+                        }
                         footer{
                             text-align: center;
                             width: 100%;
@@ -190,6 +200,7 @@ class Saved extends React.Component {
                             position: absolute;
                             bottom: 0;
                             padding-bottom: 10px;
+                            height: 2.5rem;
                         }
                         
     

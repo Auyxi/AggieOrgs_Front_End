@@ -16,6 +16,15 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 var store = require('store');
 
+if (!store.get('user')) {
+    store.set('user', {
+        id: "",
+        firstName: "",
+        lastName: "",
+        isSignedIn: false,
+    })
+}
+
 const indexStyle = {
     "border-top": "20px solid #500000",
     width: "100%"

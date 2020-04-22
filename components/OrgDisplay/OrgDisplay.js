@@ -13,7 +13,6 @@ class OrgDisplay extends React.Component {
 				<div className = {styles.orgName}>{this.props.orgName}</div>
 				<div className = {styles.bottomLine}>
 					<div className = {styles.tags}><b>Tags: </b>{this.props.tags}</div>
-					<div className = {styles.dateAdded}>Description: {this.props.purpose}</div>
 				</div>
 			</div>
 		)

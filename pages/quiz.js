@@ -18,6 +18,15 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 var store = require('store');
 
+if (!store.get('user')) {
+    store.set('user', {
+        id: "",
+        firstName: "",
+        lastName: "",
+        isSignedIn: false,
+    })
+}
+
 // using material-ui now https://material-ui.com/components/selects/
 // dynamic forms for later https://itnext.io/building-a-dynamic-controlled-form-in-react-together-794a44ee552c
 // react forms doc https://reactjs.org/docs/forms.html
@@ -81,8 +90,12 @@ class Quiz extends React.Component {
             token: store.get('user').id
         });
 
-        if (!this.props.loggedIn) {
+        if (!store.get('user').isSignedIn) {
             Router.replace("/account");
+        }
+
+        if (store.get('filled')) {
+            Router.replace("/recommender");
         }
     }
 
@@ -91,14 +104,9 @@ class Quiz extends React.Component {
         if (pathname == '/quiz' && !store.get('id')) {
             Router.replace('/account');
         }
-    }
 
-    getDerivedStateFromProps(props, state) {
-        if (this.props.loggedIn) {
-            console.log("sign in");
-        }
-        else {
-            Router.replace("/quiz", "/account", {shallow: true});
+        if (pathname == '/quiz' && store.get('filled')) {
+            Router.replace("/recommender");
         }
     }
 
@@ -157,11 +165,6 @@ class Quiz extends React.Component {
     }
 
     render() {
-        const {pathname} = Router;
-        if (pathname == '/quiz' && !store.get('id')) {
-            Router.replace('/account');
-        }
-        
         let majors = ["None", "Accounting", "Aerospace Engineering", "Agribusiness", "Agricultural Communications & Journalism",
                 "Agricultural Economics", "Agricultural Leadership & Development", "Agricultural Science", "Agricultural Systems Management",
                 "Animal Science", "Anthropology", "Applied Mathematical Sciences", "Agricultural Engineering", "Biochemistry",
@@ -296,10 +299,6 @@ class Quiz extends React.Component {
                     </div>
                     <StyledButton 
                         onClick={this.handleSubmit}
-                    >
-                            Submit
-                    </StyledButton>
-                    <StyledButton 
                         href='/interests'
                     >
                             Interests ->
@@ -357,19 +356,6 @@ class Quiz extends React.Component {
             
         );
     }
-}
-
-Quiz.getInitialProps = (ctx) => {
-    if (!store.get('user')) {
-        store.set('user', {
-            id: "",
-            firstName: "",
-            lastName: "",
-            isSignedIn: false,
-        })
-    }
-
-    return { loggedIn: store.get('user').isSignedIn}
 }
 
 export default Quiz;

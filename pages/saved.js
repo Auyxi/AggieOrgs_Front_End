@@ -160,12 +160,6 @@ class Saved extends React.Component {
 
                 {display}
 
-                <OrgDisplay
-                    orgName = "asd"
-                    tags = "asd"
-                    purpose =  "asd"
-                />
-
                 <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylski for CSCE 482 @ TAMU</footer>
     
                 <style jsx>{`

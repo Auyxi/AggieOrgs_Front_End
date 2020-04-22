@@ -1,8 +1,28 @@
 import SideNavLayout from "../components/SideNavLayout";
 import Head from 'next/head';
 import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 var store = require('store');
+
+const StyledButton = withStyles({
+    root: {
+        background: '#500000',
+        color: 'white',
+        padding: '5px 20px 5px 20px',
+        border: "2px solid #500000",
+        'font-family': 'Roboto',
+        'text-decoration': 'none',
+        'margin-left': '100px',
+        '&:hover': {
+            background: 'white',
+            color: 'maroon',
+            "font-weight": "bold",
+        }
+
+    },
+})(Button);
 
 // https://www.intricatecloud.io/2019/08/adding-google-sign-in-to-your-webapp-a-react-example/
 
@@ -22,6 +42,7 @@ class Account extends React.Component {
         }
 
         this.signOut = this.signOut.bind(this);
+        this.clearInfo = this.clearInfo.bind(this);
     }
 
     componentDidMount() {
@@ -79,7 +100,13 @@ class Account extends React.Component {
         .then((response) => response.json())
         .then((data) => {
             console.log('Success - GET: ', data);
-            store.set('id', data.userId); 
+            store.set('id', data.userId);
+            if (data.userInterestTags.length != 0) {
+                store.set('filled', true);
+            } 
+            else {
+                store.set('filled', false);
+            }
         })
         .catch((error) => {
             fetch('https://api.aggieorgs.com/api/v1/account', {
@@ -93,7 +120,8 @@ class Account extends React.Component {
             .then((response) => response.json())
             .then((data) => {
                 console.log('Success - POST: ', data);
-                store.set('id', data.userId); 
+                store.set('id', data.userId);
+                store.set('filled', false); 
             })
             .catch((error) => {
                 console.log('Error: ', error);
@@ -106,6 +134,7 @@ class Account extends React.Component {
 
         store.set('user', this.state);
         store.remove('id');
+        store.remove('filled');
         console.log(store.get('user'));
         
         this.setState({
@@ -114,6 +143,31 @@ class Account extends React.Component {
         auth2.signOut(); 
 
         console.log('User signed out.');
+    }
+
+    clearInfo() {
+        let data = {
+            userInterestOrgsId: [],
+            userDislikeOrgsId: [],
+            userGender: this.state.gender
+        };
+        console.log(data);
+
+        fetch('https://api.aggieorgs.com/api/v1/account/'.concat(store.get('id')), {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': this.state.id
+            },
+            body: JSON.stringify(data),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success: ', data);
+        })
+        .catch((error) => {
+            console.error('Error: ', error);
+        });
     }
 
     getContent() {
@@ -127,10 +181,20 @@ class Account extends React.Component {
             return (
                 <div>
                     <h1>Welcome to AggieOrgs, {this.state.firstName}</h1>
-                    <p>ID: {store.get('user').id}</p>
-                    <p>First Name: {store.get('user').firstName}</p>
-                    <p>Last Name: {store.get('user').lastName}</p>
-                    <a href="account" onClick={this.signOut}>Sign out of Google</a>
+                    <StyledButton 
+                        onClick={this.clearInfo}
+                        color="secondary"
+                        variant="contained"
+                    >
+                            Clear saved organisations / reset recommendations
+                    </StyledButton>
+                    <StyledButton 
+                        onClick={this.signOut}
+                        color="secondary"
+                        variant="contained"
+                    >
+                            Sign out of Google
+                    </StyledButton>
                     <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylski for CSCE 482 @ TAMU</footer>
                     <style jsx>{`
                         @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');

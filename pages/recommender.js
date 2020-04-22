@@ -4,7 +4,9 @@ import Card from "../components/Card/Card";
 import SideNavLayout from "../components/SideNavLayout";
 import fetch from 'isomorphic-fetch';
 import Head from 'next/head';
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Link from 'next/link';
 
 var store = require('store');
 var queue = [];
@@ -16,12 +18,31 @@ const indexStyle = {
     width: "100%"
 };
 
+const StyledButton = withStyles({
+    root: {
+        background: '#500000',
+        color: 'white',
+        padding: '5px 20px 5px 20px',
+        border: "2px solid #500000",
+        'font-family': 'Roboto',
+        'text-decoration': 'none',
+        'margin-left': '100px',
+        '&:hover': {
+            background: 'white',
+            color: 'maroon',
+            "font-weight": "bold",
+        }
+
+    },
+})(Button);
+
 class Recommender extends React.Component {
     constructor() {
         super();
         this.state = {
             recs: [],
-            data: {}
+            data: {},
+            loading: true
         }
         this.likeOrg = this.likeOrg.bind(this);
         this.dislikeOrg = this.dislikeOrg.bind(this);
@@ -54,12 +75,17 @@ class Recommender extends React.Component {
                     return response.json();
                 })
                 .then((data) => {
-                    this.setState({data: data}, () => 
-                        {console.log(this.state);}
-                    );
+                    this.setState({
+                        data: data,
+                        loading: false
+                    }, () => {
+                        console.log(this.state);
+                    });
                 });
             })
         }
+
+
     }
 
     handleChange = name => event => {
@@ -69,6 +95,10 @@ class Recommender extends React.Component {
     }
 
     likeOrg() {
+        this.setState({
+            loading: true
+        });
+    
         console.log("liked");
         var likedAPI = "https://api.aggieorgs.com/api/v1/account/" + store.get('id') + ":likeOrg"
         var sendBody = { orgId : this.state.data.orgId };
@@ -94,7 +124,7 @@ class Recommender extends React.Component {
                 return response.json();
             })
             .then((data) => {
-                this.setState({data: data}, () => 
+                this.setState({data: data, loading: false}, () => 
                     {console.log(this.state);}
                 );
             });
@@ -124,6 +154,10 @@ class Recommender extends React.Component {
     }
 
     dislikeOrg() {
+        this.setState({
+            loading: true
+        });
+
         console.log("dislike");
         var likedAPI = "https://api.aggieorgs.com/api/v1/account/" + store.get('id') + ":dislikeOrg"
         var sendBody = { orgId : this.state.data.orgId };
@@ -149,7 +183,7 @@ class Recommender extends React.Component {
                 return response.json();
             })
             .then((data) => {
-                this.setState({data: data}, () => 
+                this.setState({data: data, loading: false}, () => 
                     {console.log(this.state);}
                 );
             });
@@ -178,7 +212,58 @@ class Recommender extends React.Component {
         }
     }
 
+    loading() {
+        return (
+            <div>
+                <div className="loader"></div>
+
+                <style jsx>{`
+                    .loader {
+                        border: 16px solid #f3f3f3; /* Light grey */
+                        border-top: 16px solid #500000;
+                        border-radius: 50%;
+                        width: 120px;
+                        height: 120px;
+                        animation: spin 2s linear infinite;
+                        margin: 0;
+                        position: absolute;
+                        top: 45%;
+                        left: 45%;
+                        transform: translate(-50%, -50%);
+                    }
+                    
+                    @keyframes spin {
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                    }
+                `}</style>
+            </div>
+        );
+    }
+
+    pref() {
+        store.set('filled', false);
+    }
+
     render() {
+        var display;
+        if (this.state.loading) {
+            display = this.loading();
+        }
+        else {
+            display = <Card 
+                        orgName = {this.state.data.orgName}
+                        purpose = {this.state.data.orgPurpose}
+                        dues = {this.state.data.orgMembershipFee}
+                        conName = "None"
+                        conEmail = {this.state.data.orgEmail}
+                        time = {this.state.data.orgTimeCommitment}
+                        tags = {this.state.data.orgTags}
+                        liked = {this.likeOrg}
+                        disliked = {this.dislikeOrg}
+                    />;
+        }
+
         return (
             <div style={indexStyle}>
                 <Head>
@@ -187,19 +272,18 @@ class Recommender extends React.Component {
                 </Head>
                 <SideNavLayout />
                 <h1>Here are your recommended organizations.</h1>
-                <p href = "/interests">Click here to update your prefrences.</p>
+                <p href = "/interests">Click here to update your preferences.</p>
+                <Link href="/quiz">
+                    <StyledButton
+                        onClick = {this.pref()}
+                        color="secondary"
+                        variant="contained"
+                    >
+                        Preferences                            
+                    </StyledButton>
+                </Link>
 
-                <Card 
-                    orgName = {this.state.data.orgName}
-                    purpose = {this.state.data.orgPurpose}
-                    dues = {this.state.data.orgMembershipFee}
-                    conName = "None"
-                    conEmail = {this.state.data.orgEmail}
-                    time = {this.state.data.orgTimeCommitment}
-                    tags = {this.state.data.orgTags}
-                    liked = {this.likeOrg}
-                    disliked = {this.dislikeOrg}
-                />
+                {display}
 
                 <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylski for CSCE 482 @ TAMU</footer>
                 <style jsx>{`

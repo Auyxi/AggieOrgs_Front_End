@@ -114,6 +114,7 @@ class Interests extends React.Component {
     }
 
     handleSubmit = event => {
+        store.set('filled', true);
         let categories = [];
 
         for (let [key, value] of Object.entries(this.state)) {
@@ -270,12 +271,6 @@ class Interests extends React.Component {
                     </Link>
                     <StyledButton 
                         onClick={this.handleSubmit}
-                        color="secondary"
-                        variant="contained"
-                    >
-                            Submit
-                    </StyledButton>
-                    <StyledButton 
                         color="secondary"
                         variant="contained"
                         href='/recommender'

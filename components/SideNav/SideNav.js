@@ -26,11 +26,6 @@ const SideNav = props => {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/search">
-                            <a>View All Organizations</a>
-                        </Link>
-                    </li>
-                    <li>
                         <Link href="/account">
                             <a>My Account</a>
                         </Link>

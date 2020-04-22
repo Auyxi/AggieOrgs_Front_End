@@ -131,7 +131,7 @@ class Account extends React.Component {
                     <p>First Name: {store.get('user').firstName}</p>
                     <p>Last Name: {store.get('user').lastName}</p>
                     <a href="account" onClick={this.signOut}>Sign out of Google</a>
-                    <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylyski for CSCE 482 @ TAMU</footer>
+                    <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylski for CSCE 482 @ TAMU</footer>
                     <style jsx>{`
                         @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
                         h1 {
@@ -175,7 +175,7 @@ class Account extends React.Component {
                     <p>Please sign in to view your account and access other functionality in the website.</p>
                     <p2>You are not signed in. Click here to sign in.</p2>
                     <div id="loginButton"></div>
-                    <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylyski for CSCE 482 @ TAMU</footer>
+                    <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylski for CSCE 482 @ TAMU</footer>
                     <style jsx>{`
                         @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
                         h1 {

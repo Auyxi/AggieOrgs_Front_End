@@ -128,8 +128,22 @@ class Saved extends React.Component {
     }
 
     listOrgs() {
+<<<<<<< HEAD
         var test = this.state.orgs;
         var display = test.map((elem) => <OrgDisplay orgName={elem.orgName} tags={elem.orgTags} purpose={elem.orgPurpose} />)
+=======
+        var orgs = this.state.orgs;
+        console.log("inside of listOrgs");
+        console.log(orgs);
+        var items = orgs.forEach((elem) => {
+            elem.orgName;
+        });
+        console.log("print");
+        for (var i = 0; i < print.length; i++) {
+            console.log(print[i]);
+        }
+        console.log(items);
+>>>>>>> 2a61b436f95d77e1362afe50ce612bd099491373
         return (
             <div>
                 {display}
@@ -166,7 +180,7 @@ class Saved extends React.Component {
                     purpose =  "asd"
                 />
 
-                <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylyski for CSCE 482 @ TAMU</footer>
+                <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylski for CSCE 482 @ TAMU</footer>
     
                 <style jsx>{`
                         @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');

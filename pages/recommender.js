@@ -187,6 +187,7 @@ class Recommender extends React.Component {
                 </Head>
                 <SideNavLayout />
                 <h1>Here are your recommended organizations.</h1>
+                <p href = "/interests">Click here to update your prefrences.</p>
 
                 <Card 
                     orgName = {this.state.data.orgName}
@@ -200,7 +201,7 @@ class Recommender extends React.Component {
                     disliked = {this.dislikeOrg}
                 />
 
-                <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylyski for CSCE 482 @ TAMU</footer>
+                <footer>Created by Emily Davis, Taige Li, Alex Pham, Ben McKenzie, and Cameron Przybylski for CSCE 482 @ TAMU</footer>
                 <style jsx>{`
                     @import url('https://fonts.googleapis.com/css?family=Muli|Roboto&display=swap');
                     h1 {

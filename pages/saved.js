@@ -51,7 +51,7 @@ class Saved extends React.Component {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': "eyJhbGciOiJSUzI1NiIsImtpZCI6ImY5ZDk3YjRjYWU5MGJjZDc2YWViMjAwMjZmNmI3NzBjYWMyMjE3ODMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiODg1MTE2MTQ5MDY5LWwzZ2Y4czQ4dTVhc3FkMjd2c2VxYmg5a2Nobzl1cnNsLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiODg1MTE2MTQ5MDY5LWwzZ2Y4czQ4dTVhc3FkMjd2c2VxYmg5a2Nobzl1cnNsLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTE3NDY1MDI0NjAyOTUzMzkxMzY3IiwiZW1haWwiOiJhbGV4LmQubi5waGFtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiODJzcFRwTUN6QWRDRGpFU1BuNHctdyIsIm5hbWUiOiJBbGV4IFBoYW0iLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tLy1FZEJSbUMwTlFZZy9BQUFBQUFBQUFBSS9BQUFBQUFBQUFBQS9BQUtXSkpPTWhaNklzeno1SU94TXZHMWw5N1RBYVNKX05nL3M5Ni1jL3Bob3RvLmpwZyIsImdpdmVuX25hbWUiOiJBbGV4IiwiZmFtaWx5X25hbWUiOiJQaGFtIiwibG9jYWxlIjoiZW4iLCJpYXQiOjE1ODc1MDcwODEsImV4cCI6MTU4NzUxMDY4MSwianRpIjoiYWJlOTA0MjY2MjExZWM5NmNmNTk0MGYwZTY0YjcyMGNmNTFjNWVlZSJ9.yCt2XzSi-TWZ6xu9YOlzxamyh273n4wyNGlnWHDbGieU9_Mg78g9CDyfECnFtmJgtK8CIwuywMZGsWaT6-42UN2xZCZJXDQpMTKTiYkw-O6Pw-5zqn7XECJyMVsXXExGEHZbWBUwTgzGbV-2N3ItdBj40_rUK2cQXmBi7vwMsUVVtJG4Q2geH5tT37yDQDOHILeOWBQp3AUQfVjlmYR29ZWcUYOBagcrNsxr0upLJ0wA7AtykVZw9372ox09NT7vJXL3BuEwxR3LMPSfeezwD8hK7ZXFTupEa2ycZicSyI_9Zb-kC9P8cXnjOEDXD_vEiU91EXVDAm3_orgLYlAvWQ"
+                'Authorization': store.get('user').id
             }
         })
         .then((response) => response.json())
@@ -65,7 +65,7 @@ class Saved extends React.Component {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': "eyJhbGciOiJSUzI1NiIsImtpZCI6ImY5ZDk3YjRjYWU5MGJjZDc2YWViMjAwMjZmNmI3NzBjYWMyMjE3ODMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiODg1MTE2MTQ5MDY5LWwzZ2Y4czQ4dTVhc3FkMjd2c2VxYmg5a2Nobzl1cnNsLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiODg1MTE2MTQ5MDY5LWwzZ2Y4czQ4dTVhc3FkMjd2c2VxYmg5a2Nobzl1cnNsLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTE3NDY1MDI0NjAyOTUzMzkxMzY3IiwiZW1haWwiOiJhbGV4LmQubi5waGFtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiODJzcFRwTUN6QWRDRGpFU1BuNHctdyIsIm5hbWUiOiJBbGV4IFBoYW0iLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tLy1FZEJSbUMwTlFZZy9BQUFBQUFBQUFBSS9BQUFBQUFBQUFBQS9BQUtXSkpPTWhaNklzeno1SU94TXZHMWw5N1RBYVNKX05nL3M5Ni1jL3Bob3RvLmpwZyIsImdpdmVuX25hbWUiOiJBbGV4IiwiZmFtaWx5X25hbWUiOiJQaGFtIiwibG9jYWxlIjoiZW4iLCJpYXQiOjE1ODc1MDcwODEsImV4cCI6MTU4NzUxMDY4MSwianRpIjoiYWJlOTA0MjY2MjExZWM5NmNmNTk0MGYwZTY0YjcyMGNmNTFjNWVlZSJ9.yCt2XzSi-TWZ6xu9YOlzxamyh273n4wyNGlnWHDbGieU9_Mg78g9CDyfECnFtmJgtK8CIwuywMZGsWaT6-42UN2xZCZJXDQpMTKTiYkw-O6Pw-5zqn7XECJyMVsXXExGEHZbWBUwTgzGbV-2N3ItdBj40_rUK2cQXmBi7vwMsUVVtJG4Q2geH5tT37yDQDOHILeOWBQp3AUQfVjlmYR29ZWcUYOBagcrNsxr0upLJ0wA7AtykVZw9372ox09NT7vJXL3BuEwxR3LMPSfeezwD8hK7ZXFTupEa2ycZicSyI_9Zb-kC9P8cXnjOEDXD_vEiU91EXVDAm3_orgLYlAvWQ"
+                        'Authorization': store.get('user').id
                     }
                 })
                 .then((response) => response.json())

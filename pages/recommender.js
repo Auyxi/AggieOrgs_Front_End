@@ -187,6 +187,7 @@ class Recommender extends React.Component {
                 </Head>
                 <SideNavLayout />
                 <h1>Here are your recommended organizations.</h1>
+                <p href = "/interests">Click here to update your prefrences.</p>
 
                 <Card 
                     orgName = {this.state.data.orgName}

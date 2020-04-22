@@ -174,7 +174,15 @@ class Quiz extends React.Component {
                 "Economics", "Electrical Engineering", "Electronic Systems Engineering Technology", "English", "Entomology", "Environmental Design",
                 "Environmental Engineering", "Environmental Geosciences", "Environmental Studies (COALS)", "Environmental Studies (Geosciences)", 
                 "Finance", "Food Science & Technology", "Food Systems Industry Management", "Forensic & Investigative Sciences", "Forestry", 
-                "General Studies", "Genetics", "Geographic Information Science & Technology"];
+                "General Studies", "Genetics", "Geographic Information Science & Technology", "Geography", "Geology", "Geophysics", "Health",
+                "History", "Horticulture", "Human Resource Development", "Industrial Distribution", "Industrial Engineering", "Interdisciplinary Engineering",
+                "Education", "International Studies", "Kinesiology", "Landscape Architecture", "Management", "Managment Information Systems",
+                "Manufacturing and Mechanical Engineering Technology", "Marine Biology", "Marketing", "Mathematics", "Mechanical Engineering",
+                "Meteorology", "Microbiology", "Modern Languages", "Nuclear Engineering", "Nursing", "Nutritional Sciences", "Oceanography", "Ocean Engineering", 
+                "Performance Studies", "Petroleum Engineering", "Philosophy", "Physics", "Soil Science", "Political Science", "Poultry Science",
+                "Psychology", "Public Health", "Rangeland Ecology and Management", "Tourism Sciences", "Sociology", "Spanish", "Spatial Sciences",
+                "Sport Management", "Statistics", "Supply Chain Management", "Technology Management", "Telecommunication Media Studies", "Turfgrass Science",
+                "University Studies", "Urban and Regional Planning", "Visualization", "Wildlife and Fisheries Sciences", "Women's and Gender Studies", "Zoology"];
         let majorDegrees = majors.map((major) =>
             <MenuItem value={major}>{major}</MenuItem>
         );
@@ -202,7 +210,24 @@ class Quiz extends React.Component {
             secondMajor = <StyledButton style={{'margin-left': 20}} onClick={this.addMajorClickHandler}>Add new major</StyledButton>
         }
 
-        let minors = ["None", "Computer Science", "Computing", "Computer Engineering", "Cybersecurity"];
+        let minors = ["None", "Accounting", "Aerospace Engineering", "Agribusiness", "Agricultural Communications & Journalism",
+                "Agricultural Economics", "Agricultural Leadership & Development", "Agricultural Science", "Agricultural Systems Management",
+                "Animal Science", "Anthropology", "Applied Mathematical Sciences", "Agricultural Engineering", "Biochemistry",
+                "Bioenvironmental Sciences", "Biological & Agricultural Engineering", "Biology", "Biomedical Engineering", "Biomedical Sciences",
+                "Business Honors", "Chemical Engineering", "Chemistry", "Civil Engineering", "Classics", "Civil Engineering", "Communication",
+                "Community Health", "Computer Engineering", "Computer Science", "Computing", "Construction Science", "Ecological Restoration",
+                "Economics", "Electrical Engineering", "Electronic Systems Engineering Technology", "English", "Entomology", "Environmental Design",
+                "Environmental Engineering", "Environmental Geosciences", "Environmental Studies (COALS)", "Environmental Studies (Geosciences)", 
+                "Finance", "Food Science & Technology", "Food Systems Industry Management", "Forensic & Investigative Sciences", "Forestry", 
+                "General Studies", "Genetics", "Geographic Information Science & Technology", "Geography", "Geology", "Geophysics", "Health",
+                "History", "Horticulture", "Human Resource Development", "Industrial Distribution", "Industrial Engineering", "Interdisciplinary Engineering",
+                "Education", "International Studies", "Kinesiology", "Landscape Architecture", "Management", "Managment Information Systems",
+                "Manufacturing and Mechanical Engineering Technology", "Marine Biology", "Marketing", "Mathematics", "Mechanical Engineering",
+                "Meteorology", "Microbiology", "Modern Languages", "Nuclear Engineering", "Nursing", "Nutritional Sciences", "Oceanography", "Ocean Engineering", 
+                "Performance Studies", "Petroleum Engineering", "Philosophy", "Physics", "Soil Science", "Political Science", "Poultry Science",
+                "Psychology", "Public Health", "Rangeland Ecology and Management", "Tourism Sciences", "Sociology", "Spanish", "Spatial Sciences",
+                "Sport Management", "Statistics", "Supply Chain Management", "Technology Management", "Telecommunication Media Studies", "Turfgrass Science",
+                "University Studies", "Urban and Regional Planning", "Visualization", "Wildlife and Fisheries Sciences", "Women's and Gender Studies", "Zoology"];
         let minorDegrees = minors.map((minors) =>
             <MenuItem value={minors}>{minors}</MenuItem>
         );

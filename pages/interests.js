@@ -168,93 +168,110 @@ class Interests extends React.Component {
                                             label="Academic"
                                         />
                                         <FormControlLabel
-                                            control={<Checkbox checked={this.state.Religious} onChange={this.handleChange('Religious')} value="religious" />}
-                                            label="Religious"
+                                            control={<Checkbox checked={this.state['Arts/Entertainment']} onChange={this.handleChange('Arts/Entertainment')} value="artsEntertainment" />}
+                                            label="Arts/Entertainment"
                                         />
                                         <FormControlLabel
                                             control={
-                                            <Checkbox checked={this.state['Fine Arts']} onChange={this.handleChange('Fine Arts')} value="fineArts" />
+                                            <Checkbox checked={this.state['Greek Life']} onChange={this.handleChange('Greek Life')} value="greekLife" />
                                             }
-                                            label="Fine Arts"
+                                            label="Greek Life"
                                         />
                                         <FormControlLabel
-                                            control={<Checkbox checked={this.state.Academic} onChange={this.handleChange('Academic')} value="academic" />}
-                                            label="Academic"
+                                            control={<Checkbox checked={this.state.Internatiional} onChange={this.handleChange('Internatiional')} value="internatiional" />}
+                                            label="International/Multicultural"
                                         />
                                         <FormControlLabel
-                                            control={<Checkbox checked={this.state.Religious} onChange={this.handleChange('Religious')} value="religious" />}
-                                            label="Religious"
+                                            control={<Checkbox checked={this.state.Leadership} onChange={this.handleChange('Leadership')} value="leadership" />}
+                                            label="Leadership/Governance"
                                         />
                                         <FormControlLabel
                                             control={
-                                            <Checkbox checked={this.state['Fine Arts']} onChange={this.handleChange('Fine Arts')} value="fineArts" />
+                                            <Checkbox checked={this.state['Military']} onChange={this.handleChange('Military')} value="military" />
                                             }
-                                            label="Fine Arts"
+                                            label="Military"
+                                        />
+                                        <FormControlLabel
+                                            control={
+                                            <Checkbox checked={this.state['Politics']} onChange={this.handleChange('Politics')} value="politics" />
+                                            }
+                                            label="Politics/Advocacy"
                                         />
                                     </div>
                                     <div className = "row2">
                                         <FormControlLabel
-                                            control={<Checkbox checked={this.state.Academic} onChange={this.handleChange('Academic')} value="academic" />}
-                                            label="Academic"
+                                            control={<Checkbox checked={this.state.Career} onChange={this.handleChange('Career')} value="career" />}
+                                            label="Professional/Career"
                                         />
                                         <FormControlLabel
-                                            control={<Checkbox checked={this.state.Religious} onChange={this.handleChange('Religious')} value="religious" />}
-                                            label="Religious"
-                                        />
-                                        <FormControlLabel
-                                            control={
-                                            <Checkbox checked={this.state['Fine Arts']} onChange={this.handleChange('Fine Arts')} value="fineArts" />
-                                            }
-                                            label="Fine Arts"
-                                        />
-                                        <FormControlLabel
-                                            control={<Checkbox checked={this.state.Academic} onChange={this.handleChange('Academic')} value="academic" />}
-                                            label="Academic"
-                                        />
-                                        <FormControlLabel
-                                            control={<Checkbox checked={this.state.Religious} onChange={this.handleChange('Religious')} value="religious" />}
-                                            label="Religious"
+                                            control={<Checkbox checked={this.state.Recreation} onChange={this.handleChange('Recreation')} value="recreation" />}
+                                            label="Recreation/Sports"
                                         />
                                         <FormControlLabel
                                             control={
-                                            <Checkbox checked={this.state['Fine Arts']} onChange={this.handleChange('Fine Arts')} value="fineArts" />
+                                            <Checkbox checked={this.state['Religious']} onChange={this.handleChange('Religious')} value="religious" />
                                             }
-                                            label="Fine Arts"
+                                            label="Religious"
+                                        />
+                                        <FormControlLabel
+                                            control={<Checkbox checked={this.state.Residence} onChange={this.handleChange('Residence')} value="residence" />}
+                                            label="Residence Halls"
+                                        />
+                                        <FormControlLabel
+                                            control={<Checkbox checked={this.state.Service} onChange={this.handleChange('Service')} value="service" />}
+                                            label="Service"
+                                        />
+                                        <FormControlLabel
+                                            control={
+                                            <Checkbox checked={this.state['Social']} onChange={this.handleChange('Social')} value="Social" />
+                                            }
+                                            label="Social"
+                                        />
+                                        <FormControlLabel
+                                            control={
+                                            <Checkbox checked={this.state['SpecialInterests']} onChange={this.handleChange('SpecialInterests')} value="specialInterests" />
+                                            }
+                                            label="Special Interests"
                                         />
                                     </div>
 
                                     <div className = "row3">
                                         <FormControlLabel
-                                            control={<Checkbox checked={this.state.Academic} onChange={this.handleChange('Academic')} value="academic" />}
-                                            label="Academic"
+                                            control={<Checkbox checked={this.state.Business} onChange={this.handleChange('Business')} value="business" />}
+                                            label="Business"
                                         />
                                         <FormControlLabel
-                                            control={<Checkbox checked={this.state.Religious} onChange={this.handleChange('Religious')} value="religious" />}
-                                            label="Religious"
-                                        />
-                                        <FormControlLabel
-                                            control={
-                                            <Checkbox checked={this.state['Fine Arts']} onChange={this.handleChange('Fine Arts')} value="fineArts" />
-                                            }
-                                            label="Fine Arts"
-                                        />
-                                        <FormControlLabel
-                                            control={<Checkbox checked={this.state.Academic} onChange={this.handleChange('Academic')} value="academic" />}
-                                            label="Academic"
-                                        />
-                                        <FormControlLabel
-                                            control={<Checkbox checked={this.state.Religious} onChange={this.handleChange('Religious')} value="religious" />}
-                                            label="Religious"
+                                            control={<Checkbox checked={this.state.Engineering} onChange={this.handleChange('Engineering')} value="engineering" />}
+                                            label="Engineering"
                                         />
                                         <FormControlLabel
                                             control={
-                                            <Checkbox checked={this.state['Fine Arts']} onChange={this.handleChange('Fine Arts')} value="fineArts" />
+                                            <Checkbox checked={this.state['Spirit']} onChange={this.handleChange('Spirit')} value="spirit" />
                                             }
-                                            label="Fine Arts"
+                                            label="Spirit and Tradition"
+                                        />
+                                        <FormControlLabel
+                                            control={<Checkbox checked={this.state.LiberalArts} onChange={this.handleChange('LiberalArts')} value="liberalArts" />}
+                                            label="Liberal Arts"
+                                        />
+                                        <FormControlLabel
+                                            control={<Checkbox checked={this.state.Graduate} onChange={this.handleChange('Graduate')} value="graduate" />}
+                                            label="Graduate School"
+                                        />
+                                        <FormControlLabel
+                                            control={
+                                            <Checkbox checked={this.state['Health']} onChange={this.handleChange('Health')} value="health" />
+                                            }
+                                            label="Health"
+                                        />
+                                        <FormControlLabel
+                                            control={
+                                            <Checkbox checked={this.state['Government']} onChange={this.handleChange('Government')} value="government" />
+                                            }
+                                            label="Student Government"
                                         />
                                     </div>
                                     </MuiThemeProvider>
-
                                 </FormGroup>
                             <FormHelperText> Click button when done</FormHelperText>
                         </FormControl>
